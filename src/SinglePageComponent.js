@@ -1,197 +1,231 @@
-import React from 'react';
+import React from "react";
 
 // import "./App.css";
 import "./style.css";
 // import "./classy-nav.css";
 // import "./icons folde/style.css";
 // import "./newstyle.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {useEffect, useState} from 'react';
-import {Carousel} from 'react-bootstrap' 
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect, useState } from "react";
+import { Carousel } from "react-bootstrap";
 
-import logos from "./Images/ff.png"
+import logos from "./Images/ff.png";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 
 import "swiper/swiper-bundle.min.css";
-import jQuery from 'jquery';
-import { findDOMNode } from 'react-dom';
-import $ from 'jquery';
-import image from "./Images/rr.jpeg"
+import jQuery from "jquery";
+import { findDOMNode } from "react-dom";
+import $ from "jquery";
+import image from "./Images/rr.jpeg";
 
 const SinglePageComponent = () => {
-
-       
-    var uza_window = $(window);
-    uza_window.on('scroll', function () {
-      if (uza_window.scrollTop() > 0) {
-          $('.main-header-area').addClass('sticky');
-      } else {
-          $('.main-header-area').removeClass('sticky');
-      }
+  var uza_window = $(window);
+  uza_window.on("scroll", function () {
+    if (uza_window.scrollTop() > 0) {
+      $(".main-header-area").addClass("sticky");
+    } else {
+      $(".main-header-area").removeClass("sticky");
+    }
   });
 
+  (function ($) {
+    if ($.fn.classyNav) {
+      $("#uzaNav").classyNav();
+    }
+    $.fn.classyNav = function (options) {
+      // Variables
+      var navContainer = $(".classy-nav-container");
+      var classy_nav = $(".classynav ul");
+      var classy_navli = $(".classynav > ul > li");
+      var navbarToggler = $(".classy-navbar-toggler");
+      var closeIcon = $(".classycloseIcon");
+      var navToggler = $(".navbarToggler");
+      var classyMenu = $(".classy-menu");
+      var var_window = $(window);
 
-  
-  (function($){
+      // default options
+      var defaultOpt = $.extend(
+        {
+          theme: "light",
+          breakpoint: 991,
+          openCloseSpeed: 350,
+          megaopenCloseSpeed: 700,
+          alwaysHidden: false,
+          openMobileMenu: "left",
+          dropdownRtl: true,
+          stickyNav: true,
+          stickyFooterNav: false,
+        },
+        options
+      );
 
-        if ($.fn.classyNav) {
-            $('#uzaNav').classyNav();
+      return this.each(function () {
+        // light or dark theme
+        if (defaultOpt.theme === "light" || defaultOpt.theme === "dark") {
+          navContainer.addClass(defaultOpt.theme);
         }
-        $.fn.classyNav = function (options) {
 
+        // open mobile menu direction 'left' or 'right' side
+        if (
+          defaultOpt.openMobileMenu === "left" ||
+          defaultOpt.openMobileMenu === "right"
+        ) {
+          navContainer.addClass(defaultOpt.openMobileMenu);
+        }
+
+        // dropdown rtl
+        if (defaultOpt.dropdownRtl === true) {
+          navContainer.addClass("dropdown-rtl");
+        }
+
+        // navbar toggler
+        navbarToggler.on("click", function () {
+          navToggler.addClass("active");
+          classyMenu.addClass("menu-on");
+        });
+
+        // close icon
+        closeIcon.on("click", function () {
+          classyMenu.removeClass("menu-on");
+          navToggler.removeClass("active");
+        });
+
+        // add dropdown & megamenu class in parent li class
+        classy_navli.has(".dropdown").addClass("cn-dropdown-item");
+        classy_navli.has(".megamenu").addClass("megamenu-item");
+
+        // adds toggle button to li items that have children
+        classy_nav.find("li a").each(function () {
+          if ($(this).next().length > 0) {
+            $(this)
+              .parent("li")
+              .addClass("has-down")
+              .append('<span class="dd-trigger"></span>');
+          }
+        });
+
+        // expands the dropdown menu on each click
+        classy_nav.find("li .dd-trigger").on("click", function (e) {
+          e.preventDefault();
+          $(this)
+            .parent("li")
+            .children("ul")
+            .stop(true, true)
+            .slideToggle(defaultOpt.openCloseSpeed);
+          $(this).parent("li").toggleClass("active");
+        });
+
+        // add padding in dropdown & megamenu item
+        $(".megamenu-item").removeClass("has-down");
+
+        // expands the megamenu on each click
+        classy_nav.find("li .dd-trigger").on("click", function (e) {
+          e.preventDefault();
+          $(this)
+            .parent("li")
+            .children(".megamenu")
+            .slideToggle(defaultOpt.megaopenCloseSpeed);
+        });
+
+        // check browser width in real-time
+        function breakpointCheck() {
+          var windoWidth = window.innerWidth;
+          if (windoWidth <= defaultOpt.breakpoint) {
+            navContainer.removeClass("breakpoint-off");
+            navContainer.addClass("breakpoint-on");
+            // $('.breakpoint-off').toggleClass('breakpoint-on');
+          } else {
+            navContainer.removeClass("breakpoint-on");
+            navContainer.addClass("breakpoint-off");
+            // $('.breakpoint-on').toggleClass('breakpoint-off');
+          }
+        }
+
+        breakpointCheck();
+
+        var_window.on("resize", function () {
+          breakpointCheck();
+        });
+
+        // always hidden enable
+        if (defaultOpt.alwaysHidden) {
+          navContainer.addClass("breakpoint-on").removeClass("breakpoint-off");
+        }
+
+        // sticky
+        if (defaultOpt.stickyNav) {
+          var_window.on("scroll", function () {
+            if (var_window.scrollTop() > 0) {
+              navContainer.addClass("classy-sticky");
+            } else {
+              navContainer.removeClass("classy-sticky");
+            }
+          });
+        }
+
+        // footer sticky
+        if (defaultOpt.stickyFooterNav === true) {
+          navContainer.addClass("classy-sticky-footer");
+        }
+      });
+    };
+  })(jQuery);
+
+  // let listener = null
+  // const [scrollState, setScrollState] = useState("top")
+
+  //     useEffect(() => {
+  //       listener = document.addEventListener("scroll", e => {
+  //         var scrolled = document.scrollingElement.scrollTop
+  //         if (scrolled >= 10) {
+  //           if (scrollState !== "amir") {
+  //             setScrollState("amir")
+  //           }
+  //         } else {
+  //           if (scrollState !== "top") {
+  //             setScrollState("top")
+  //           }
+  //         }
+  //       })
+  //       return () => {
+  //         document.removeEventListener("scroll", listener)
+  //       }
+  //     }, [scrollState])
+
+      const [name, setName] = useState();
+      const [email, setEmail] = useState();
+      const [subject, setSubject] = useState();
+      const [message, setMessage] = useState();
+
+      const data = {
+        name:name,
+        email:email,
+        subject:subject,
+        message:message,
+      }
     
-            // Variables
-            var navContainer = $('.classy-nav-container');
-            var classy_nav = $('.classynav ul');
-            var classy_navli = $('.classynav > ul > li');
-            var navbarToggler = $('.classy-navbar-toggler');
-            var closeIcon = $('.classycloseIcon');
-            var navToggler = $('.navbarToggler');
-            var classyMenu = $('.classy-menu');
-            var var_window = $(window);
-            
-             // default options
-             var defaultOpt = $.extend({
-                 theme: 'light',
-                 breakpoint: 991,
-                 openCloseSpeed: 350,
-                 megaopenCloseSpeed: 700,
-                 alwaysHidden: false,
-                 openMobileMenu: 'left',
-                 dropdownRtl: true,
-                 stickyNav: true,
-                 stickyFooterNav: false,
-             }, options);
-       
-             return this.each(function () {
-       
-                 // light or dark theme
-                 if (defaultOpt.theme === 'light' || defaultOpt.theme === 'dark') {
-                   navContainer.addClass(defaultOpt.theme);
-               }
-       
-               // open mobile menu direction 'left' or 'right' side
-               if (defaultOpt.openMobileMenu === 'left' || defaultOpt.openMobileMenu === 'right') {
-                   navContainer.addClass(defaultOpt.openMobileMenu);
-               }
-       
-               // dropdown rtl
-               if (defaultOpt.dropdownRtl === true) {
-                   navContainer.addClass('dropdown-rtl');
-               }
-       
-               // navbar toggler
-               navbarToggler.on('click', function () {
-                   navToggler.addClass('active');
-                   classyMenu.addClass('menu-on');
-               });
-       
-               // close icon
-               closeIcon.on('click', function () {
-                   classyMenu.removeClass('menu-on');
-                   navToggler.removeClass('active');
-               });
-       
-               // add dropdown & megamenu class in parent li class
-               classy_navli.has('.dropdown').addClass('cn-dropdown-item');
-               classy_navli.has('.megamenu').addClass('megamenu-item');
-       
-               // adds toggle button to li items that have children
-               classy_nav.find('li a').each(function () {
-                   if ($(this).next().length > 0) {
-                       $(this).parent('li').addClass('has-down').append('<span class="dd-trigger"></span>');
-                   }
-               });
-       
-               // expands the dropdown menu on each click
-               classy_nav.find('li .dd-trigger').on('click', function (e) {
-                   e.preventDefault();
-                   $(this).parent('li').children('ul').stop(true, true).slideToggle(defaultOpt.openCloseSpeed);
-                   $(this).parent('li').toggleClass('active');
-               });
-       
-               // add padding in dropdown & megamenu item
-               $('.megamenu-item').removeClass('has-down');
-       
-               // expands the megamenu on each click
-               classy_nav.find('li .dd-trigger').on('click', function (e) {
-                   e.preventDefault();
-                   $(this).parent('li').children('.megamenu').slideToggle(defaultOpt.megaopenCloseSpeed);
-               });
-       
-                // check browser width in real-time
-                function breakpointCheck() {
-                    var windoWidth = window.innerWidth;
-                    if (windoWidth <= defaultOpt.breakpoint) {
-                        navContainer.removeClass('breakpoint-off');
-                        navContainer.addClass('breakpoint-on');
-                        // $('.breakpoint-off').toggleClass('breakpoint-on');
-                    } else {
-                        navContainer.removeClass('breakpoint-on');
-                        navContainer.addClass('breakpoint-off');
-                        // $('.breakpoint-on').toggleClass('breakpoint-off');
-                    }
-                }
+    async function onSubmit(e){
+      e.preventDefault();
 
-                breakpointCheck();
-                
-                var_window.on('resize', function () {
-                    breakpointCheck();
-                });
-       
-               // always hidden enable
-               if (defaultOpt.alwaysHidden) {
-                   navContainer.addClass('breakpoint-on').removeClass('breakpoint-off');
-               }
-       
-                 // sticky
-                 if (defaultOpt.stickyNav) {
-                     var_window.on('scroll', function () {
-                         if (var_window.scrollTop() > 0) {
-                             navContainer.addClass('classy-sticky');
-                         } else {
-                             navContainer.removeClass('classy-sticky');
-                         }
-                     });
-                 }
-       
-               
-                 // footer sticky
-                 if (defaultOpt.stickyFooterNav === true) {
-                     navContainer.addClass('classy-sticky-footer');
-                 }
-             });
-         };
-       
-}(jQuery));    
-    
- 
+      fetch("https://sheet.best/api/sheets/18362fa5-38c4-4e4e-81d3-df643e83c332", {
+          method: 'POST',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+             },
+          body: JSON.stringify(data)
+       })
+      //  .then((response) => response.json())
+       .then((responseData) => {
+          alert("Your Ad Has Been Posted")
+          console.log(responseData);
+          })
+    }
 
-// let listener = null
-// const [scrollState, setScrollState] = useState("top")
-
-//     useEffect(() => {
-//       listener = document.addEventListener("scroll", e => {
-//         var scrolled = document.scrollingElement.scrollTop
-//         if (scrolled >= 10) {
-//           if (scrollState !== "amir") {
-//             setScrollState("amir")
-//           }
-//         } else {
-//           if (scrollState !== "top") {
-//             setScrollState("top")
-//           }
-//         }
-//       })
-//       return () => {
-//         document.removeEventListener("scroll", listener)
-//       }
-//     }, [scrollState])
-
-    return (
-        <>
-            <div>
+  return (
+    <>
+      <div>
         <div className="top-search-area">
           <div
             className="modal fade"
@@ -229,7 +263,7 @@ const SinglePageComponent = () => {
             <div className="classy-nav-container breakpoint-off left ">
               <nav
                 className="classy-navbar justify-content-between"
-                id="uzaNav" 
+                id="uzaNav"
               >
                 <a className="nav-brand" href="index.html">
                   <p></p>
@@ -341,64 +375,64 @@ const SinglePageComponent = () => {
           </div>
         </header>
         <section className="welcome-area">
-        <Carousel>
-                <Carousel.Item>
-                <div className="single-welcome-slide">
-                    <div className="background-curve">
-                      <img
-                        src="img/xcurve-1.png.pagespeed.ic.XvLJf8V3oh.webp"
-                        alt=""
-                      />
-                    </div>
-                    <div className="welcome-content h-100">
-                      <div className="container h-100">
-                        <div className="row h-100 align-items-center">
-                          <div className="col-12 col-md-6">
-                            <div className="welcome-text">
-                              <h2
-                                data-animation="fadeInUp"
-                                data-delay="100ms"
-                                style={{ animationDelay: "100ms",fontSize:60 }}
-                              >
-                                Need phone repair ? <br /> We got <span>You.</span>
-                              </h2>
-                              <h5
-                                data-animation="fadeInUp"
-                                data-delay="400ms"
-                                style={{ animationDelay: "400ms" }}
-                              >
-                                We do mobile repairing with enthusiasm.
-                              </h5>
-                              <a
-                                href="#"
-                                className="btn uza-btn btn-2"
-                                data-animation="fadeInUp"
-                                data-delay="700ms"
-                                style={{ animationDelay: "700ms" }}
-                              >
-                                Start Exploring
-                              </a>
-                            </div>
-                          </div>
-                          <div className="col-12 col-md-6">
-                            <div className="welcome-thumbnail">
-                              <img
-                                src={image}
-                                alt=""
-                                data-animation="slideInRight"
-                                data-delay="400ms"
-                                data-pagespeed-url-hash={3768333782}
-                                onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                style={{ animationDelay: "400ms" }}
-                              />
-                            </div>
-                          </div>
+          <Carousel>
+            <Carousel.Item>
+              <div className="single-welcome-slide">
+                <div className="background-curve">
+                  <img
+                    src="img/xcurve-1.png.pagespeed.ic.XvLJf8V3oh.webp"
+                    alt=""
+                  />
+                </div>
+                <div className="welcome-content h-100">
+                  <div className="container h-100">
+                    <div className="row h-100 align-items-center">
+                      <div className="col-12 col-md-6">
+                        <div className="welcome-text">
+                          <h2
+                            data-animation="fadeInUp"
+                            data-delay="100ms"
+                            style={{ animationDelay: "100ms", fontSize: 60 }}
+                          >
+                            Need phone repair ? <br /> We got <span>You.</span>
+                          </h2>
+                          <h5
+                            data-animation="fadeInUp"
+                            data-delay="400ms"
+                            style={{ animationDelay: "400ms" }}
+                          >
+                            We do mobile repairing with enthusiasm.
+                          </h5>
+                          <a
+                            href="#"
+                            className="btn uza-btn btn-2"
+                            data-animation="fadeInUp"
+                            data-delay="700ms"
+                            style={{ animationDelay: "700ms" }}
+                          >
+                            Start Exploring
+                          </a>
+                        </div>
+                      </div>
+                      <div className="col-12 col-md-6">
+                        <div className="welcome-thumbnail">
+                          <img
+                            src={image}
+                            alt=""
+                            data-animation="slideInRight"
+                            data-delay="400ms"
+                            data-pagespeed-url-hash={3768333782}
+                            onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                            style={{ animationDelay: "400ms" }}
+                          />
                         </div>
                       </div>
                     </div>
                   </div>
-                </Carousel.Item>
-              </Carousel>
+                </div>
+              </div>
+            </Carousel.Item>
+          </Carousel>
           {/* <div className="welcome-slides owl-carousel owl-loaded owl-drag">
             <div className="owl-stage-outer">
               
@@ -865,10 +899,15 @@ const SinglePageComponent = () => {
                 <div className="about-us-content mb-80">
                   <h2>Why to choose &amp; AL-ABID Mobile?</h2>
                   <p>
-                  AL-ABID.com is Pakistan's first and most trusted cell phone administration organization. We fix cell phones, everything being equal, and make with the additional accommodation of free pickup and conveyance. 
+                    AL-ABID.com is Pakistan's first and most trusted cell phone
+                    administration organization. We fix cell phones, everything
+                    being equal, and make with the additional accommodation of
+                    free pickup and conveyance.
                   </p>
                   <p>
-                  It is safe to say that you are searching for telephone or some other gadget fix? We complete huge number of versatile fixes each month and help you.
+                    It is safe to say that you are searching for telephone or
+                    some other gadget fix? We complete huge number of versatile
+                    fixes each month and help you.
                   </p>
                   <a href="#" className="btn uza-btn btn-2 mt-4">
                     Start Exploring
@@ -903,7 +942,8 @@ const SinglePageComponent = () => {
                   </div>
                   <h5>All Mobile Glass Change.</h5>
                   <p>
-                    All type of mobile glass change with latest machine even edge mobile also chnage with fininshing.
+                    All type of mobile glass change with latest machine even
+                    edge mobile also chnage with fininshing.
                   </p>
                 </div>
               </div>
@@ -914,7 +954,8 @@ const SinglePageComponent = () => {
                   </div>
                   <h5>All type of mobile software.</h5>
                   <p>
-                    All type of mobile software problem solve with latest software and devices.
+                    All type of mobile software problem solve with latest
+                    software and devices.
                   </p>
                 </div>
               </div>
@@ -925,7 +966,8 @@ const SinglePageComponent = () => {
                   </div>
                   <h5>All mobile hardware repairing.</h5>
                   <p>
-                    By using the highest quality replacement parts, we make sure that your device will work like new. 
+                    By using the highest quality replacement parts, we make sure
+                    that your device will work like new.
                   </p>
                 </div>
               </div>
@@ -933,7 +975,7 @@ const SinglePageComponent = () => {
           </div>
         </section>
         <section className="uza-portfolio-area section-padding-80">
-        {/* <div className="container">
+          {/* <div className="container">
             <div className="row">
               <div className="col-12">
                 <div className="section-heading text-center">
@@ -945,281 +987,280 @@ const SinglePageComponent = () => {
               </div>
             </div>
           </div> */}
-              <Swiper
+          <Swiper
             modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={40}
             slidesPerView={3}
-            
             pagination={{ clickable: true }}
-            onSlideChange={() => console.log('slide change')}
+            onSlideChange={() => console.log("slide change")}
             onSwiper={(swiper) => console.log(swiper)}
           >
             <SwiperSlide>
-            <div className="single-portfolio-slide">
-                        <img
-                          src="img/x6.jpg.pagespeed.ic.fnUkywwBZz.webp"
-                          alt=""
-                          data-pagespeed-url-hash={945763387}
-                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                        />
-                        <div className="overlay-effect">
-                          <h4>Digital Marketing</h4>
-                          <p>
-                            At vero eos et accusam et justo duo dolores et ea
-                            rebum. Stet gubergren no sea takimata sanctus est
-                          </p>
-                        </div>
-                        <div className="view-more-btn">
-                          <a href="#">
-                            <i className="arrow_right" />
-                          </a>
-                        </div>
-                      </div>
+              <div className="single-portfolio-slide">
+                <img
+                  src="img/x6.jpg.pagespeed.ic.fnUkywwBZz.webp"
+                  alt=""
+                  data-pagespeed-url-hash={945763387}
+                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                />
+                <div className="overlay-effect">
+                  <h4>Digital Marketing</h4>
+                  <p>
+                    At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet gubergren no sea takimata sanctus est
+                  </p>
+                </div>
+                <div className="view-more-btn">
+                  <a href="#">
+                    <i className="arrow_right" />
+                  </a>
+                </div>
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="single-portfolio-slide">
-                        <img
-                          src="img/x5.jpg.pagespeed.ic.TKBNCQ7ich.webp"
-                          alt=""
-                          data-pagespeed-url-hash={651263466}
-                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                        />
-                        <div className="overlay-effect">
-                          <h4>Digital Marketing</h4>
-                          <p>
-                            At vero eos et accusam et justo duo dolores et ea
-                            rebum. Stet gubergren no sea takimata sanctus est
-                          </p>
-                        </div>
-                        <div className="view-more-btn">
-                          <a href="#">
-                            <i className="arrow_right" />
-                          </a>
-                        </div>
-                      </div>
+              <div className="single-portfolio-slide">
+                <img
+                  src="img/x5.jpg.pagespeed.ic.TKBNCQ7ich.webp"
+                  alt=""
+                  data-pagespeed-url-hash={651263466}
+                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                />
+                <div className="overlay-effect">
+                  <h4>Digital Marketing</h4>
+                  <p>
+                    At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet gubergren no sea takimata sanctus est
+                  </p>
+                </div>
+                <div className="view-more-btn">
+                  <a href="#">
+                    <i className="arrow_right" />
+                  </a>
+                </div>
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="single-portfolio-slide">
-                        <img
-                          src="img/x6.jpg.pagespeed.ic.fnUkywwBZz.webp"
-                          alt=""
-                          data-pagespeed-url-hash={945763387}
-                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                        />
-                        <div className="overlay-effect">
-                          <h4>Digital Marketing</h4>
-                          <p>
-                            At vero eos et accusam et justo duo dolores et ea
-                            rebum. Stet gubergren no sea takimata sanctus est
-                          </p>
-                        </div>
-                        <div className="view-more-btn">
-                          <a href="#">
-                            <i className="arrow_right" />
-                          </a>
-                        </div>
-                      </div>
+              <div className="single-portfolio-slide">
+                <img
+                  src="img/x6.jpg.pagespeed.ic.fnUkywwBZz.webp"
+                  alt=""
+                  data-pagespeed-url-hash={945763387}
+                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                />
+                <div className="overlay-effect">
+                  <h4>Digital Marketing</h4>
+                  <p>
+                    At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet gubergren no sea takimata sanctus est
+                  </p>
+                </div>
+                <div className="view-more-btn">
+                  <a href="#">
+                    <i className="arrow_right" />
+                  </a>
+                </div>
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="single-portfolio-slide">
-                        <img
-                          src="img/x3.jpg.pagespeed.ic.QmqEbGyIs2.webp"
-                          alt=""
-                          data-pagespeed-url-hash={62263624}
-                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                        />
-                        <div className="overlay-effect">
-                          <h4>Digital Marketing</h4>
-                          <p>
-                            At vero eos et accusam et justo duo dolores et ea
-                            rebum. Stet gubergren no sea takimata sanctus est
-                          </p>
-                        </div>
-                        <div className="view-more-btn">
-                          <a href="#">
-                            <i className="arrow_right" />
-                          </a>
-                        </div>
-                      </div>
+              <div className="single-portfolio-slide">
+                <img
+                  src="img/x3.jpg.pagespeed.ic.QmqEbGyIs2.webp"
+                  alt=""
+                  data-pagespeed-url-hash={62263624}
+                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                />
+                <div className="overlay-effect">
+                  <h4>Digital Marketing</h4>
+                  <p>
+                    At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet gubergren no sea takimata sanctus est
+                  </p>
+                </div>
+                <div className="view-more-btn">
+                  <a href="#">
+                    <i className="arrow_right" />
+                  </a>
+                </div>
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="single-portfolio-slide">
-                        <img
-                          src="img/x4.jpg.pagespeed.ic.KxaCIhR9Oa.webp"
-                          alt=""
-                          data-pagespeed-url-hash={356763545}
-                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                        />
-                        <div className="overlay-effect">
-                          <h4>Digital Marketing</h4>
-                          <p>
-                            At vero eos et accusam et justo duo dolores et ea
-                            rebum. Stet gubergren no sea takimata sanctus est
-                          </p>
-                        </div>
-                        <div className="view-more-btn">
-                          <a href="#">
-                            <i className="arrow_right" />
-                          </a>
-                        </div>
-                      </div>
+              <div className="single-portfolio-slide">
+                <img
+                  src="img/x4.jpg.pagespeed.ic.KxaCIhR9Oa.webp"
+                  alt=""
+                  data-pagespeed-url-hash={356763545}
+                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                />
+                <div className="overlay-effect">
+                  <h4>Digital Marketing</h4>
+                  <p>
+                    At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet gubergren no sea takimata sanctus est
+                  </p>
+                </div>
+                <div className="view-more-btn">
+                  <a href="#">
+                    <i className="arrow_right" />
+                  </a>
+                </div>
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="single-portfolio-slide">
-                        <img
-                          src="img/x5.jpg.pagespeed.ic.TKBNCQ7ich.webp"
-                          alt=""
-                          data-pagespeed-url-hash={651263466}
-                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                        />
-                        <div className="overlay-effect">
-                          <h4>Digital Marketing</h4>
-                          <p>
-                            At vero eos et accusam et justo duo dolores et ea
-                            rebum. Stet gubergren no sea takimata sanctus est
-                          </p>
-                        </div>
-                        <div className="view-more-btn">
-                          <a href="#">
-                            <i className="arrow_right" />
-                          </a>
-                        </div>
-                      </div>
+              <div className="single-portfolio-slide">
+                <img
+                  src="img/x5.jpg.pagespeed.ic.TKBNCQ7ich.webp"
+                  alt=""
+                  data-pagespeed-url-hash={651263466}
+                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                />
+                <div className="overlay-effect">
+                  <h4>Digital Marketing</h4>
+                  <p>
+                    At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet gubergren no sea takimata sanctus est
+                  </p>
+                </div>
+                <div className="view-more-btn">
+                  <a href="#">
+                    <i className="arrow_right" />
+                  </a>
+                </div>
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="single-portfolio-slide">
-                        <img
-                          src="img/x6.jpg.pagespeed.ic.fnUkywwBZz.webp"
-                          alt=""
-                          data-pagespeed-url-hash={945763387}
-                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                        />
-                        <div className="overlay-effect">
-                          <h4>Digital Marketing</h4>
-                          <p>
-                            At vero eos et accusam et justo duo dolores et ea
-                            rebum. Stet gubergren no sea takimata sanctus est
-                          </p>
-                        </div>
-                        <div className="view-more-btn">
-                          <a href="#">
-                            <i className="arrow_right" />
-                          </a>
-                        </div>
-                      </div>
+              <div className="single-portfolio-slide">
+                <img
+                  src="img/x6.jpg.pagespeed.ic.fnUkywwBZz.webp"
+                  alt=""
+                  data-pagespeed-url-hash={945763387}
+                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                />
+                <div className="overlay-effect">
+                  <h4>Digital Marketing</h4>
+                  <p>
+                    At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet gubergren no sea takimata sanctus est
+                  </p>
+                </div>
+                <div className="view-more-btn">
+                  <a href="#">
+                    <i className="arrow_right" />
+                  </a>
+                </div>
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="single-portfolio-slide">
-                        <img
-                          src="img/x5.jpg.pagespeed.ic.TKBNCQ7ich.webp"
-                          alt=""
-                          data-pagespeed-url-hash={651263466}
-                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                        />
-                        <div className="overlay-effect">
-                          <h4>Digital Marketing</h4>
-                          <p>
-                            At vero eos et accusam et justo duo dolores et ea
-                            rebum. Stet gubergren no sea takimata sanctus est
-                          </p>
-                        </div>
-                        <div className="view-more-btn">
-                          <a href="#">
-                            <i className="arrow_right" />
-                          </a>
-                        </div>
-                      </div>
+              <div className="single-portfolio-slide">
+                <img
+                  src="img/x5.jpg.pagespeed.ic.TKBNCQ7ich.webp"
+                  alt=""
+                  data-pagespeed-url-hash={651263466}
+                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                />
+                <div className="overlay-effect">
+                  <h4>Digital Marketing</h4>
+                  <p>
+                    At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet gubergren no sea takimata sanctus est
+                  </p>
+                </div>
+                <div className="view-more-btn">
+                  <a href="#">
+                    <i className="arrow_right" />
+                  </a>
+                </div>
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="single-portfolio-slide">
-                        <img
-                          src="img/x6.jpg.pagespeed.ic.fnUkywwBZz.webp"
-                          alt=""
-                          data-pagespeed-url-hash={945763387}
-                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                        />
-                        <div className="overlay-effect">
-                          <h4>Digital Marketing</h4>
-                          <p>
-                            At vero eos et accusam et justo duo dolores et ea
-                            rebum. Stet gubergren no sea takimata sanctus est
-                          </p>
-                        </div>
-                        <div className="view-more-btn">
-                          <a href="#">
-                            <i className="arrow_right" />
-                          </a>
-                        </div>
-                      </div>
+              <div className="single-portfolio-slide">
+                <img
+                  src="img/x6.jpg.pagespeed.ic.fnUkywwBZz.webp"
+                  alt=""
+                  data-pagespeed-url-hash={945763387}
+                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                />
+                <div className="overlay-effect">
+                  <h4>Digital Marketing</h4>
+                  <p>
+                    At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet gubergren no sea takimata sanctus est
+                  </p>
+                </div>
+                <div className="view-more-btn">
+                  <a href="#">
+                    <i className="arrow_right" />
+                  </a>
+                </div>
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="single-portfolio-slide">
-                        <img
-                          src="img/x3.jpg.pagespeed.ic.QmqEbGyIs2.webp"
-                          alt=""
-                          data-pagespeed-url-hash={62263624}
-                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                        />
-                        <div className="overlay-effect">
-                          <h4>Digital Marketing</h4>
-                          <p>
-                            At vero eos et accusam et justo duo dolores et ea
-                            rebum. Stet gubergren no sea takimata sanctus est
-                          </p>
-                        </div>
-                        <div className="view-more-btn">
-                          <a href="#">
-                            <i className="arrow_right" />
-                          </a>
-                        </div>
-                      </div>
+              <div className="single-portfolio-slide">
+                <img
+                  src="img/x3.jpg.pagespeed.ic.QmqEbGyIs2.webp"
+                  alt=""
+                  data-pagespeed-url-hash={62263624}
+                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                />
+                <div className="overlay-effect">
+                  <h4>Digital Marketing</h4>
+                  <p>
+                    At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet gubergren no sea takimata sanctus est
+                  </p>
+                </div>
+                <div className="view-more-btn">
+                  <a href="#">
+                    <i className="arrow_right" />
+                  </a>
+                </div>
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="single-portfolio-slide">
-                        <img
-                          src="img/x4.jpg.pagespeed.ic.KxaCIhR9Oa.webp"
-                          alt=""
-                          data-pagespeed-url-hash={356763545}
-                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                        />
-                        <div className="overlay-effect">
-                          <h4>Digital Marketing</h4>
-                          <p>
-                            At vero eos et accusam et justo duo dolores et ea
-                            rebum. Stet gubergren no sea takimata sanctus est
-                          </p>
-                        </div>
-                        <div className="view-more-btn">
-                          <a href="#">
-                            <i className="arrow_right" />
-                          </a>
-                        </div>
-                      </div>
+              <div className="single-portfolio-slide">
+                <img
+                  src="img/x4.jpg.pagespeed.ic.KxaCIhR9Oa.webp"
+                  alt=""
+                  data-pagespeed-url-hash={356763545}
+                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                />
+                <div className="overlay-effect">
+                  <h4>Digital Marketing</h4>
+                  <p>
+                    At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet gubergren no sea takimata sanctus est
+                  </p>
+                </div>
+                <div className="view-more-btn">
+                  <a href="#">
+                    <i className="arrow_right" />
+                  </a>
+                </div>
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-            <div className="single-portfolio-slide">
-                        <img
-                          src="img/x5.jpg.pagespeed.ic.TKBNCQ7ich.webp"
-                          alt=""
-                          data-pagespeed-url-hash={651263466}
-                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                        />
-                        <div className="overlay-effect">
-                          <h4>Digital Marketing</h4>
-                          <p>
-                            At vero eos et accusam et justo duo dolores et ea
-                            rebum. Stet gubergren no sea takimata sanctus est
-                          </p>
-                        </div>
-                        <div className="view-more-btn">
-                          <a href="#">
-                            <i className="arrow_right" />
-                          </a>
-                        </div>
-                      </div>
+              <div className="single-portfolio-slide">
+                <img
+                  src="img/x5.jpg.pagespeed.ic.TKBNCQ7ich.webp"
+                  alt=""
+                  data-pagespeed-url-hash={651263466}
+                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                />
+                <div className="overlay-effect">
+                  <h4>Digital Marketing</h4>
+                  <p>
+                    At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet gubergren no sea takimata sanctus est
+                  </p>
+                </div>
+                <div className="view-more-btn">
+                  <a href="#">
+                    <i className="arrow_right" />
+                  </a>
+                </div>
+              </div>
             </SwiperSlide>
           </Swiper>
-         
+
           {/* <div className="container-fluid">
             <div className="row">
               <div className="portfolio-sildes owl-carousel owl-loaded owl-drag">
@@ -1324,297 +1365,286 @@ const SinglePageComponent = () => {
           <div className="clients-feedback-area mt-80 section-padding-80 clearfix ml-80">
             <Carousel className="container">
               <Carousel.Item className="container ">
-              <div className="single-testimonial-slide d-flex align-items-center">
-                            <div className="testimonial-thumbnail">
-                              <img
-                                src="img/x23.jpg.pagespeed.ic.MJuXq_03eb.webp"
-                                alt=""
-                                data-pagespeed-url-hash={979328626}
-                                onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                              />
-                            </div>
-                            <div className="testimonial-content">
-                              <h4>
-                                “Colorlib Ltd’s ranking has gone up so much from
-                                the great work that your team has done and our
-                                brand get organic sales consistently from your
-                                efforts. We are happy that the results of your
-                                efforts were lasting and profitable.”
-                              </h4>
-                              <div className="ratings">
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                              </div>
-                              <div className="author-info">
-                                <h5>
-                                  Darrell Goodman <span>- CEO colorlib</span>
-                                </h5>
-                              </div>
-                              <div className="quote-icon">
-                                <img
-                                  src="img/xquote.png.pagespeed.ic.Qtly-e3dXp.webp"
-                                  alt=""
-                                  data-pagespeed-url-hash={516807259}
-                                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                />
-                              </div>
-                            </div>
-                          </div>
+                <div className="single-testimonial-slide d-flex align-items-center">
+                  <div className="testimonial-thumbnail">
+                    <img
+                      src="img/x23.jpg.pagespeed.ic.MJuXq_03eb.webp"
+                      alt=""
+                      data-pagespeed-url-hash={979328626}
+                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                    />
+                  </div>
+                  <div className="testimonial-content">
+                    <h4>
+                      “Colorlib Ltd’s ranking has gone up so much from the great
+                      work that your team has done and our brand get organic
+                      sales consistently from your efforts. We are happy that
+                      the results of your efforts were lasting and profitable.”
+                    </h4>
+                    <div className="ratings">
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                    </div>
+                    <div className="author-info">
+                      <h5>
+                        Darrell Goodman <span>- CEO colorlib</span>
+                      </h5>
+                    </div>
+                    <div className="quote-icon">
+                      <img
+                        src="img/xquote.png.pagespeed.ic.Qtly-e3dXp.webp"
+                        alt=""
+                        data-pagespeed-url-hash={516807259}
+                        onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                      />
+                    </div>
+                  </div>
+                </div>
               </Carousel.Item>
-              
+
               <Carousel.Item className="container">
-              <div className="single-testimonial-slide d-flex align-items-center">
-                            <div className="testimonial-thumbnail">
-                              <img
-                                src="img/x24.jpg.pagespeed.ic.Gj_a09zvee.webp"
-                                alt=""
-                                data-pagespeed-url-hash={1273828547}
-                                onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                              />
-                            </div>
-                            <div className="testimonial-content">
-                              <h4>
-                                “Colorlib Ltd’s ranking has gone up so much from
-                                the great work that your team has done and our
-                                brand get organic sales consistently from your
-                                efforts. We are happy that the results of your
-                                efforts were lasting and profitable.”
-                              </h4>
-                              <div className="ratings">
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                              </div>
-                              <div className="author-info">
-                                <h5>
-                                  Darrell Goodman <span>- CEO colorlib</span>
-                                </h5>
-                              </div>
-                              <div className="quote-icon">
-                                <img
-                                  src="img/xquote.png.pagespeed.ic.Qtly-e3dXp.webp"
-                                  alt=""
-                                  data-pagespeed-url-hash={516807259}
-                                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                />
-                              </div>
-                            </div>
-                          </div>
+                <div className="single-testimonial-slide d-flex align-items-center">
+                  <div className="testimonial-thumbnail">
+                    <img
+                      src="img/x24.jpg.pagespeed.ic.Gj_a09zvee.webp"
+                      alt=""
+                      data-pagespeed-url-hash={1273828547}
+                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                    />
+                  </div>
+                  <div className="testimonial-content">
+                    <h4>
+                      “Colorlib Ltd’s ranking has gone up so much from the great
+                      work that your team has done and our brand get organic
+                      sales consistently from your efforts. We are happy that
+                      the results of your efforts were lasting and profitable.”
+                    </h4>
+                    <div className="ratings">
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                    </div>
+                    <div className="author-info">
+                      <h5>
+                        Darrell Goodman <span>- CEO colorlib</span>
+                      </h5>
+                    </div>
+                    <div className="quote-icon">
+                      <img
+                        src="img/xquote.png.pagespeed.ic.Qtly-e3dXp.webp"
+                        alt=""
+                        data-pagespeed-url-hash={516807259}
+                        onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                      />
+                    </div>
+                  </div>
+                </div>
               </Carousel.Item>
-              
+
               <Carousel.Item className="container">
-              <div className="single-testimonial-slide d-flex align-items-center">
-                            <div className="testimonial-thumbnail">
-                              <img
-                                src="img/x7.jpg.pagespeed.ic.1wRD2aRq6f.webp"
-                                alt=""
-                                data-pagespeed-url-hash={1240263308}
-                                onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                              />
-                            </div>
-                            <div className="testimonial-content">
-                              <h4>
-                                “Colorlib Ltd’s ranking has gone up so much from
-                                the great work that your team has done and our
-                                brand get organic sales consistently from your
-                                efforts. We are happy that the results of your
-                                efforts were lasting and profitable.”
-                              </h4>
-                              <div className="ratings">
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                              </div>
-                              <div className="author-info">
-                                <h5>
-                                  Darrell Goodman <span>- CEO colorlib</span>
-                                </h5>
-                              </div>
-                              <div className="quote-icon">
-                                <img
-                                  src="img/xquote.png.pagespeed.ic.Qtly-e3dXp.webp"
-                                  alt=""
-                                  data-pagespeed-url-hash={516807259}
-                                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                />
-                              </div>
-                            </div>
-                          </div>
+                <div className="single-testimonial-slide d-flex align-items-center">
+                  <div className="testimonial-thumbnail">
+                    <img
+                      src="img/x7.jpg.pagespeed.ic.1wRD2aRq6f.webp"
+                      alt=""
+                      data-pagespeed-url-hash={1240263308}
+                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                    />
+                  </div>
+                  <div className="testimonial-content">
+                    <h4>
+                      “Colorlib Ltd’s ranking has gone up so much from the great
+                      work that your team has done and our brand get organic
+                      sales consistently from your efforts. We are happy that
+                      the results of your efforts were lasting and profitable.”
+                    </h4>
+                    <div className="ratings">
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                    </div>
+                    <div className="author-info">
+                      <h5>
+                        Darrell Goodman <span>- CEO colorlib</span>
+                      </h5>
+                    </div>
+                    <div className="quote-icon">
+                      <img
+                        src="img/xquote.png.pagespeed.ic.Qtly-e3dXp.webp"
+                        alt=""
+                        data-pagespeed-url-hash={516807259}
+                        onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                      />
+                    </div>
+                  </div>
+                </div>
               </Carousel.Item>
               <Carousel.Item className="container">
-              
-                          <div className="single-testimonial-slide d-flex align-items-center">
-                            <div className="testimonial-thumbnail">
-                              <img
-                                src="img/x23.jpg.pagespeed.ic.MJuXq_03eb.webp"
-                                alt=""
-                                data-pagespeed-url-hash={979328626}
-                                onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                              />
-                            </div>
-                            <div className="testimonial-content">
-                              <h4>
-                                “Colorlib Ltd’s ranking has gone up so much from
-                                the great work that your team has done and our
-                                brand get organic sales consistently from your
-                                efforts. We are happy that the results of your
-                                efforts were lasting and profitable.”
-                              </h4>
-                              <div className="ratings">
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                              </div>
-                              <div className="author-info">
-                                <h5>
-                                  Darrell Goodman <span>- CEO colorlib</span>
-                                </h5>
-                              </div>
-                              <div className="quote-icon">
-                                <img
-                                  src="img/xquote.png.pagespeed.ic.Qtly-e3dXp.webp"
-                                  alt=""
-                                  data-pagespeed-url-hash={516807259}
-                                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        
+                <div className="single-testimonial-slide d-flex align-items-center">
+                  <div className="testimonial-thumbnail">
+                    <img
+                      src="img/x23.jpg.pagespeed.ic.MJuXq_03eb.webp"
+                      alt=""
+                      data-pagespeed-url-hash={979328626}
+                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                    />
+                  </div>
+                  <div className="testimonial-content">
+                    <h4>
+                      “Colorlib Ltd’s ranking has gone up so much from the great
+                      work that your team has done and our brand get organic
+                      sales consistently from your efforts. We are happy that
+                      the results of your efforts were lasting and profitable.”
+                    </h4>
+                    <div className="ratings">
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                    </div>
+                    <div className="author-info">
+                      <h5>
+                        Darrell Goodman <span>- CEO colorlib</span>
+                      </h5>
+                    </div>
+                    <div className="quote-icon">
+                      <img
+                        src="img/xquote.png.pagespeed.ic.Qtly-e3dXp.webp"
+                        alt=""
+                        data-pagespeed-url-hash={516807259}
+                        onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                      />
+                    </div>
+                  </div>
+                </div>
               </Carousel.Item>
               <Carousel.Item className="container">
-            
-                          <div className="single-testimonial-slide d-flex align-items-center">
-                            <div className="testimonial-thumbnail">
-                              <img
-                                src="img/x24.jpg.pagespeed.ic.Gj_a09zvee.webp"
-                                alt=""
-                                data-pagespeed-url-hash={1273828547}
-                                onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                              />
-                            </div>
-                            <div className="testimonial-content">
-                              <h4>
-                                “Colorlib Ltd’s ranking has gone up so much from
-                                the great work that your team has done and our
-                                brand get organic sales consistently from your
-                                efforts. We are happy that the results of your
-                                efforts were lasting and profitable.”
-                              </h4>
-                              <div className="ratings">
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                              </div>
-                              <div className="author-info">
-                                <h5>
-                                  Darrell Goodman <span>- CEO colorlib</span>
-                                </h5>
-                              </div>
-                              <div className="quote-icon">
-                                <img
-                                  src="img/xquote.png.pagespeed.ic.Qtly-e3dXp.webp"
-                                  alt=""
-                                  data-pagespeed-url-hash={516807259}
-                                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        
+                <div className="single-testimonial-slide d-flex align-items-center">
+                  <div className="testimonial-thumbnail">
+                    <img
+                      src="img/x24.jpg.pagespeed.ic.Gj_a09zvee.webp"
+                      alt=""
+                      data-pagespeed-url-hash={1273828547}
+                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                    />
+                  </div>
+                  <div className="testimonial-content">
+                    <h4>
+                      “Colorlib Ltd’s ranking has gone up so much from the great
+                      work that your team has done and our brand get organic
+                      sales consistently from your efforts. We are happy that
+                      the results of your efforts were lasting and profitable.”
+                    </h4>
+                    <div className="ratings">
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                    </div>
+                    <div className="author-info">
+                      <h5>
+                        Darrell Goodman <span>- CEO colorlib</span>
+                      </h5>
+                    </div>
+                    <div className="quote-icon">
+                      <img
+                        src="img/xquote.png.pagespeed.ic.Qtly-e3dXp.webp"
+                        alt=""
+                        data-pagespeed-url-hash={516807259}
+                        onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                      />
+                    </div>
+                  </div>
+                </div>
               </Carousel.Item>
               <Carousel.Item className="container">
-              <div className="single-testimonial-slide d-flex align-items-center">
-                            <div className="testimonial-thumbnail">
-                              <img
-                                src="img/x7.jpg.pagespeed.ic.1wRD2aRq6f.webp"
-                                alt=""
-                                data-pagespeed-url-hash={1240263308}
-                                onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                              />
-                            </div>
-                            <div className="testimonial-content">
-                              <h4>
-                                “Colorlib Ltd’s ranking has gone up so much from
-                                the great work that your team has done and our
-                                brand get organic sales consistently from your
-                                efforts. We are happy that the results of your
-                                efforts were lasting and profitable.”
-                              </h4>
-                              <div className="ratings">
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                              </div>
-                              <div className="author-info">
-                                <h5>
-                                  Darrell Goodman <span>- CEO colorlib</span>
-                                </h5>
-                              </div>
-                              <div className="quote-icon">
-                                <img
-                                  src="img/xquote.png.pagespeed.ic.Qtly-e3dXp.webp"
-                                  alt=""
-                                  data-pagespeed-url-hash={516807259}
-                                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                />
-                              </div>
-                            </div>
-                          </div>
+                <div className="single-testimonial-slide d-flex align-items-center">
+                  <div className="testimonial-thumbnail">
+                    <img
+                      src="img/x7.jpg.pagespeed.ic.1wRD2aRq6f.webp"
+                      alt=""
+                      data-pagespeed-url-hash={1240263308}
+                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                    />
+                  </div>
+                  <div className="testimonial-content">
+                    <h4>
+                      “Colorlib Ltd’s ranking has gone up so much from the great
+                      work that your team has done and our brand get organic
+                      sales consistently from your efforts. We are happy that
+                      the results of your efforts were lasting and profitable.”
+                    </h4>
+                    <div className="ratings">
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                    </div>
+                    <div className="author-info">
+                      <h5>
+                        Darrell Goodman <span>- CEO colorlib</span>
+                      </h5>
+                    </div>
+                    <div className="quote-icon">
+                      <img
+                        src="img/xquote.png.pagespeed.ic.Qtly-e3dXp.webp"
+                        alt=""
+                        data-pagespeed-url-hash={516807259}
+                        onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                      />
+                    </div>
+                  </div>
+                </div>
               </Carousel.Item>
               <Carousel.Item className="container">
-              <div className="single-testimonial-slide d-flex align-items-center">
-                            <div className="testimonial-thumbnail">
-                              <img
-                                src="img/x23.jpg.pagespeed.ic.MJuXq_03eb.webp"
-                                alt=""
-                                data-pagespeed-url-hash={979328626}
-                                onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                              />
-                            </div>
-                            <div className="testimonial-content">
-                              <h4>
-                                “Colorlib Ltd’s ranking has gone up so much from
-                                the great work that your team has done and our
-                                brand get organic sales consistently from your
-                                efforts. We are happy that the results of your
-                                efforts were lasting and profitable.”
-                              </h4>
-                              <div className="ratings">
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                                <i className="icon_star" />
-                              </div>
-                              <div className="author-info">
-                                <h5>
-                                  Darrell Goodman <span>- CEO colorlib</span>
-                                </h5>
-                              </div>
-                              <div className="quote-icon">
-                                <img
-                                  src="img/xquote.png.pagespeed.ic.Qtly-e3dXp.webp"
-                                  alt=""
-                                  data-pagespeed-url-hash={516807259}
-                                  onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
-                                />
-                              </div>
-                            </div>
-                          </div>
+                <div className="single-testimonial-slide d-flex align-items-center">
+                  <div className="testimonial-thumbnail">
+                    <img
+                      src="img/x23.jpg.pagespeed.ic.MJuXq_03eb.webp"
+                      alt=""
+                      data-pagespeed-url-hash={979328626}
+                      onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                    />
+                  </div>
+                  <div className="testimonial-content">
+                    <h4>
+                      “Colorlib Ltd’s ranking has gone up so much from the great
+                      work that your team has done and our brand get organic
+                      sales consistently from your efforts. We are happy that
+                      the results of your efforts were lasting and profitable.”
+                    </h4>
+                    <div className="ratings">
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                      <i className="icon_star" />
+                    </div>
+                    <div className="author-info">
+                      <h5>
+                        Darrell Goodman <span>- CEO colorlib</span>
+                      </h5>
+                    </div>
+                    <div className="quote-icon">
+                      <img
+                        src="img/xquote.png.pagespeed.ic.Qtly-e3dXp.webp"
+                        alt=""
+                        data-pagespeed-url-hash={516807259}
+                        onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                      />
+                    </div>
+                  </div>
+                </div>
               </Carousel.Item>
             </Carousel>
             {/* <div className="container">
@@ -1709,7 +1739,113 @@ const SinglePageComponent = () => {
               onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
             />
           </div>
-          <div className="uza-cta-area section-padding-0-80">
+          <div className="container contact mb-5">
+            <div className="section-title">
+              <h2>Contact</h2>
+              <p>
+                Magnam dolores commodi suscipit. Necessitatibus eius consequatur
+                ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam
+                quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
+                Quia fugiat sit in iste officiis commodi quidem hic quas.
+              </p>
+            </div>
+            <div className="row contact-info">
+              <div className="col-md-4">
+                <div className="contact-address">
+                <i className="fa fa-map-marker-alt"></i>
+                  <h3>Address</h3>
+                  <address>A108 Adam Street, NY 535022, USA</address>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <div className="contact-phone">
+                  <i className="bi bi-phone" />
+                  <h3>Phone Number</h3>
+                  <p>
+                    <a href="tel:+155895548855">+1 5589 55488 55</a>
+                  </p>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <div className="contact-email">
+                  <i className="bi bi-envelope" />
+                  <h3>Email</h3>
+                  <p>
+                    <a href="mailto:info@example.com">info@example.com</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="form">
+              <form
+                action="forms/contact.php"
+                method="post"
+                role="form"
+                className="php-email-form"
+              >
+                <div className="row">
+                  <div className="col-md-6 form-group">
+                    <input
+                      type="text"
+                      name="name"
+                      className="form-control"
+                      id="name"
+                      placeholder="Your Name"
+                      data-rule="minlen:4"
+                      data-msg="Please enter at least 4 chars"
+                      onChange={(e)=>{setName(e.target.value)}}
+                    />
+                  </div>
+                  <div className="col-md-6 form-group mt-3 mt-md-0">
+                    <input
+                      type="email"
+                      className="form-control"
+                      name="email"
+                      id="email"
+                      placeholder="Your Email"
+                      data-rule="email"
+                      data-msg="Please enter a valid email"
+                      onChange={(e)=>{setEmail(e.target.value)}}
+                    />
+                  </div>
+                </div>
+                <div className="form-group mt-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="subject"
+                    id="subject"
+                    placeholder="Subject"
+                    required
+                    onChange={(e)=>{setSubject(e.target.value)}}
+                  />
+                </div>
+                <div className="form-group mt-3">
+                  <textarea
+                    className="form-control"
+                    name="message"
+                    rows={5}
+                    placeholder="Message"
+                    required
+                    defaultValue={""}
+                    onChange={(e)=>{setMessage(e.target.value)}}
+                  />
+                </div>
+                <div className="my-3">
+                  <div className="loading">Loading</div>
+                  <div className="error-message" />
+                  <div className="sent-message" style={{display:"block"}}>
+                    Your message has been sent. Thank you!
+                  </div>
+                </div>
+                <div className="text-center">
+                  <button onClick={onSubmit} type="submit">Send Message</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          {/* <div className="uza-cta-area section-padding-0-80">
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-12 col-lg-8">
@@ -1729,7 +1865,7 @@ const SinglePageComponent = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="container">
             <div className="row">
               <div className="col-12">
@@ -1997,8 +2133,8 @@ const SinglePageComponent = () => {
           <i className="fa fa-angle-up"> </i>
         </a>
       </div>
-        </>
-    );
+    </>
+  );
 };
 
 export default SinglePageComponent;
