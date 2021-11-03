@@ -495,12 +495,12 @@ input:focus {
 .classy-nav-container {
   background-color: transparent;
   padding: 0; }
-  @media only screen and (max-width: 767px) {
+  /* @media only screen and (max-width: 767px) {
     .classy-nav-container {
-      padding: 0 15px; } }
-  .classy-nav-container .classy-navbar {
+      padding: 0 15px; } } */
+  /* .classy-nav-container .classy-navbar {
     height: 100px;
-    padding: 0 3%; }
+    padding: 0 3%; } */
     @media only screen and (min-width: 768px) and (max-width: 991px) {
       .classy-nav-container .classy-navbar {
         height: 70px;
@@ -695,6 +695,18 @@ input:focus {
       @media only screen and (min-width: 768px) and (max-width: 991px) {
         .single-welcome-slide .welcome-text h2 {
           font-size: 42px; } }
+      
+      @media only screen and (max-width: 368px) and (min-width: 300px) {
+        ul#nav {
+          /* padding-left: 0px; */
+          margin: 0px;
+          padding: 0px;
+        }
+
+        ul#nav li {
+          width: 50px;
+        }
+      }
       @media only screen and (max-width: 767px) {
         .single-welcome-slide .welcome-text h2 {
           font-size: 36px; } }

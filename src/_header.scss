@@ -54,11 +54,11 @@
 }
 
 .classy-nav-container {
-    background-color: transparent;
+    background-color: red;
     padding: 0;
 
     @media #{$breakpoint-xs} {
-        padding: 0 15px;
+        // padding: 0 15px;
     }
 
     .classy-navbar {
@@ -67,12 +67,12 @@
 
         @media #{$breakpoint-md} {
             height: 70px;
-            padding: 0 5%;
+            // padding: 0 5%;
         }
 
         @media #{$breakpoint-xs} {
             height: 70px;
-            padding: 0 5%;
+            // padding: 0 5%;
         }
 
         .nav-brand {
