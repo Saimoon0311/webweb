@@ -193,35 +193,38 @@ const SinglePageComponent = () => {
   //       }
   //     }, [scrollState])
 
-      const [name, setName] = useState();
-      const [email, setEmail] = useState();
-      const [subject, setSubject] = useState();
-      const [message, setMessage] = useState();
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [subject, setSubject] = useState();
+  const [message, setMessage] = useState();
 
-      const data = {
-        name:name,
-        email:email,
-        subject:subject,
-        message:message,
+  const data = {
+    name: name,
+    email: email,
+    subject: subject,
+    message: message,
+  };
+
+  async function onSubmit(e) {
+    e.preventDefault();
+
+    fetch(
+      "https://sheet.best/api/sheets/18362fa5-38c4-4e4e-81d3-df643e83c332",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       }
-    
-    async function onSubmit(e){
-      e.preventDefault();
-
-      fetch("https://sheet.best/api/sheets/18362fa5-38c4-4e4e-81d3-df643e83c332", {
-          method: 'POST',
-          headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-             },
-          body: JSON.stringify(data)
-       })
+    )
       //  .then((response) => response.json())
-       .then((responseData) => {
-          alert("Your Ad Has Been Posted")
-          console.log(responseData);
-          })
-    }
+      .then((responseData) => {
+        alert("Your Ad Has Been Posted");
+        console.log(responseData);
+      });
+  }
 
   return (
     <>
@@ -294,7 +297,10 @@ const SinglePageComponent = () => {
                   <div className="classynav">
                     <ul id="nav">
                       <li className="current-item">
-                        <a href="./index.html">Home</a>
+                        <a href="#HeroSection">Home</a>
+                      </li>
+                      <li >
+                        <a href="#pricing">Price</a>
                       </li>
                       {/* <li className="cn-dropdown-item has-down">
                         <a href="#">Pages</a>
@@ -362,10 +368,10 @@ const SinglePageComponent = () => {
                         <span className="dd-trigger" />
                       </li> */}
                       <li>
-                        <a href="./about.html">About</a>
+                        <a href="#about">About</a>
                       </li>
                       <li>
-                        <a href="./contact.html">Contact</a>
+                        <a href="#contact">Contact</a>
                       </li>
                     </ul>
                   </div>
@@ -374,7 +380,7 @@ const SinglePageComponent = () => {
             </div>
           </div>
         </header>
-        <section className="welcome-area">
+        <section className="welcome-area" id="HeroSection">
           <Carousel>
             <Carousel.Item>
               <div className="single-welcome-slide">
@@ -874,7 +880,7 @@ const SinglePageComponent = () => {
             </div>
           </div> */}
         </section>
-        <section className="uza-about-us-area">
+        <section className="uza-about-us-area" id="about">
           <div className="container">
             <div className="row align-items-center">
               <div className="col-12 col-md-6">
@@ -1739,7 +1745,84 @@ const SinglePageComponent = () => {
               onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
             />
           </div>
-          <div className="container contact mb-5">
+          <section id="pricing" className="pricing mb-5">
+            <div className="container">
+              <div className="section-title">
+                <h2>Pricing</h2>
+                <p>
+                  Magnam dolores commodi suscipit. Necessitatibus eius
+                  consequatur ex aliquid fuga eum quidem. Sit sint consectetur
+                  velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
+                  suscipit alias ea. Quia fugiat sit in iste officiis commodi
+                  quidem hic quas.
+                </p>
+              </div>
+              <div className="row">
+                <div className="col-lg-4 col-md-6">
+                  <div className="box">
+                    <h3>Free</h3>
+                    <h4>
+                      <sup>$</sup>0<span> / month</span>
+                    </h4>
+                    <ul>
+                      <li>Aida dere</li>
+                      <li>Nec feugiat nisl</li>
+                      <li>Nulla at volutpat dola</li>
+                      <li className="na">Pharetra massa</li>
+                      <li className="na">Massa ultricies mi</li>
+                    </ul>
+                    <div className="btn-wrap">
+                      <a href="#" className="btn-buy">
+                        Buy Now
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-4 col-md-6 mt-4 mt-md-0">
+                  <div className="box recommended">
+                    <h3>Business</h3>
+                    <h4>
+                      <sup>$</sup>19<span> / month</span>
+                    </h4>
+                    <ul>
+                      <li>Aida dere</li>
+                      <li>Nec feugiat nisl</li>
+                      <li>Nulla at volutpat dola</li>
+                      <li>Pharetra massa</li>
+                      <li className="na">Massa ultricies mi</li>
+                    </ul>
+                    <div className="btn-wrap">
+                      <a href="#" className="btn-buy">
+                        Buy Now
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-4 col-md-6 mt-4 mt-lg-0">
+                  <div className="box">
+                    <h3>Developer</h3>
+                    <h4>
+                      <sup>$</sup>29<span> / month</span>
+                    </h4>
+                    <ul>
+                      <li>Aida dere</li>
+                      <li>Nec feugiat nisl</li>
+                      <li>Nulla at volutpat dola</li>
+                      <li>Pharetra massa</li>
+                      <li>Massa ultricies mi</li>
+                    </ul>
+                    <div className="btn-wrap">
+                      <a href="#" className="btn-buy">
+                        Buy Now
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div id="contact" className="container contact mb-5 pt-50">
             <div className="section-title">
               <h2>Contact</h2>
               <p>
@@ -1752,7 +1835,7 @@ const SinglePageComponent = () => {
             <div className="row contact-info">
               <div className="col-md-4">
                 <div className="contact-address">
-                <i className="fa fa-map-marker-alt"></i>
+                  <i className="fa fa-map-marker-alt"></i>
                   <h3>Address</h3>
                   <address>A108 Adam Street, NY 535022, USA</address>
                 </div>
@@ -1793,7 +1876,9 @@ const SinglePageComponent = () => {
                       placeholder="Your Name"
                       data-rule="minlen:4"
                       data-msg="Please enter at least 4 chars"
-                      onChange={(e)=>{setName(e.target.value)}}
+                      onChange={(e) => {
+                        setName(e.target.value);
+                      }}
                     />
                   </div>
                   <div className="col-md-6 form-group mt-3 mt-md-0">
@@ -1805,7 +1890,9 @@ const SinglePageComponent = () => {
                       placeholder="Your Email"
                       data-rule="email"
                       data-msg="Please enter a valid email"
-                      onChange={(e)=>{setEmail(e.target.value)}}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                      }}
                     />
                   </div>
                 </div>
@@ -1817,7 +1904,9 @@ const SinglePageComponent = () => {
                     id="subject"
                     placeholder="Subject"
                     required
-                    onChange={(e)=>{setSubject(e.target.value)}}
+                    onChange={(e) => {
+                      setSubject(e.target.value);
+                    }}
                   />
                 </div>
                 <div className="form-group mt-3">
@@ -1828,18 +1917,22 @@ const SinglePageComponent = () => {
                     placeholder="Message"
                     required
                     defaultValue={""}
-                    onChange={(e)=>{setMessage(e.target.value)}}
+                    onChange={(e) => {
+                      setMessage(e.target.value);
+                    }}
                   />
                 </div>
                 <div className="my-3">
                   <div className="loading">Loading</div>
                   <div className="error-message" />
-                  <div className="sent-message" style={{display:"block"}}>
+                  <div className="sent-message" style={{ display: "block" }}>
                     Your message has been sent. Thank you!
                   </div>
                 </div>
                 <div className="text-center">
-                  <button onClick={onSubmit} type="submit">Send Message</button>
+                  <button onClick={onSubmit} type="submit">
+                    Send Message
+                  </button>
                 </div>
               </form>
             </div>
@@ -1866,7 +1959,7 @@ const SinglePageComponent = () => {
               </div>
             </div>
           </div> */}
-          <div className="container">
+          {/* <div className="container">
             <div className="row">
               <div className="col-12">
                 <div className="section-heading text-center">
@@ -1952,9 +2045,9 @@ const SinglePageComponent = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </section>
-        <section className="uza-newsletter-area">
+        {/* <section className="uza-newsletter-area">
           <div className="container">
             <div className="row align-items-center justify-content-between">
               <div className="col-12 col-md-6 col-lg-6">
@@ -1981,7 +2074,7 @@ const SinglePageComponent = () => {
             </div>
             <div className="border-line" />
           </div>
-        </section>
+        </section> */}
         <footer className="footer-area section-padding-80-0">
           <div className="container">
             <div className="row justify-content-between">

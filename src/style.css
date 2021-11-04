@@ -3172,7 +3172,7 @@ input:focus {
 }
 
 .contact .contact-info {
-  margin-bottom: 20px;
+  margin-bottom: 45px;
   text-align: center;
 }
 
@@ -3245,5 +3245,75 @@ input:focus {
   color: black;
   border: 1px solid black;
 }
-
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+.pricing .box {
+  padding: 20px;
+  background: #f7f7f7;
+  text-align: center;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgb(213 211 211 / 73%);
+}
+.pricing .recommended {
+  background: #61a4c3fa;
+}
+.pricing .recommended h3, .pricing .recommended h4, .pricing .recommended h4 span, .pricing .recommended ul, .pricing .recommended ul .na {
+  color: #fff !important;
+}
+.pricing .box h3 {
+  font-weight: 400;
+  padding: 15px;
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2a2a2a;
+}
+.pricing .box h4 {
+  font-size: 42px;
+  color: #8db16e;
+  font-weight: 500;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 20px;
+}
+.pricing .box h4 span {
+  color: #bababa;
+  font-size: 16px;
+  font-weight: 300;
+}
+.pricing .box ul {
+  padding: 0;
+  list-style: none;
+  color: #2a2a2a;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+}
+.pricing .box ul li {
+  padding-bottom: 16px;
+}
+.pricing .box .btn-wrap {
+  padding: 15px;
+  text-align: center;
+}
+.pricing .box .btn-buy {
+  display: inline-block;
+  padding: 10px 40px 12px 40px;
+  border-radius: 23px;
+  border: 1px solid black;
+  color: black;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  transition: 0.3s;
+  text-decoration: none;
+}
+.pricing .box .btn-buy:hover {
+  background: black;
+  color: #fff;
+}
 /*# sourceMappingURL=style.css.map */
