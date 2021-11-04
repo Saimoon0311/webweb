@@ -11,8 +11,17 @@ import { Carousel } from "react-bootstrap";
 
 import logos from "./Images/ff.png";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
+<<<<<<< HEAD
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 
+=======
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import uu from './Images/uu.jpeg'
+import qq from './Images/qq.jpeg'
+import tt from './Images/tt.jpeg'
+import ww from './Images/ww.jpeg'
+import yy from './Images/yy.jpeg'
+>>>>>>> a87de503e03fd30e05004ba29374e403d7cf2c4f
 import "swiper/swiper-bundle.min.css";
 import jQuery from "jquery";
 import { findDOMNode } from "react-dom";
@@ -886,7 +895,7 @@ const SinglePageComponent = () => {
               <div className="col-12 col-md-6">
                 <div className="about-us-thumbnail mb-80">
                   <img
-                    src="img/x2.jpg.pagespeed.ic.Ub5iumcgEI.webp"
+                    src={yy}
                     alt=""
                     data-pagespeed-url-hash={4062730999}
                     onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
@@ -903,7 +912,7 @@ const SinglePageComponent = () => {
               </div>
               <div className="col-12 col-md-6">
                 <div className="about-us-content mb-80">
-                  <h2>Why to choose &amp; AL-ABID Mobile?</h2>
+                  <h2>Why to choose AL-ABID Mobile Institute?</h2>
                   <p>
                     AL-ABID.com is Pakistan's first and most trusted cell phone
                     administration organization. We fix cell phones, everything
@@ -1264,6 +1273,72 @@ const SinglePageComponent = () => {
                   </a>
                 </div>
               </div>
+            </SwiperSlide>
+            <SwiperSlide>
+            <div className="single-portfolio-slide">
+                        <img
+                          src={uu}
+                          alt=""
+                          data-pagespeed-url-hash={945763387}
+                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                        />
+                        <div className="overlay-effect">
+                          <h4>Digital Marketing</h4>
+                          <p>
+                            At vero eos et accusam et justo duo dolores et ea
+                            rebum. Stet gubergren no sea takimata sanctus est
+                          </p>
+                        </div>
+                        <div className="view-more-btn">
+                          <a href="#">
+                            <i className="arrow_right" />
+                          </a>
+                        </div>
+                      </div>
+            </SwiperSlide>
+            <SwiperSlide>
+            <div className="single-portfolio-slide">
+                        <img
+                          src={qq}
+                          alt=""
+                          data-pagespeed-url-hash={651263466}
+                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                        />
+                        <div className="overlay-effect">
+                          <h4>Digital Marketing</h4>
+                          <p>
+                            At vero eos et accusam et justo duo dolores et ea
+                            rebum. Stet gubergren no sea takimata sanctus est
+                          </p>
+                        </div>
+                        <div className="view-more-btn">
+                          <a href="#">
+                            <i className="arrow_right" />
+                          </a>
+                        </div>
+                      </div>
+            </SwiperSlide>
+            <SwiperSlide>
+            <div className="single-portfolio-slide">
+                        <img
+                          src={ww}
+                          alt=""
+                          data-pagespeed-url-hash={945763387}
+                          onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
+                        />
+                        <div className="overlay-effect">
+                          <h4>Digital Marketing</h4>
+                          <p>
+                            At vero eos et accusam et justo duo dolores et ea
+                            rebum. Stet gubergren no sea takimata sanctus est
+                          </p>
+                        </div>
+                        <div className="view-more-btn">
+                          <a href="#">
+                            <i className="arrow_right" />
+                          </a>
+                        </div>
+                      </div>
             </SwiperSlide>
           </Swiper>
 
@@ -1943,7 +2018,7 @@ const SinglePageComponent = () => {
               <div className="row align-items-center">
                 <div className="col-12 col-lg-8">
                   <div className="cta-content mb-80">
-                    <h2>Interested in working with us?</h2>
+                    <h2>Are you want to grow up?</h2>
                     <h6>Hit the button below or give us a call!</h6>
                   </div>
                 </div>
@@ -1951,7 +2026,7 @@ const SinglePageComponent = () => {
                   <div className="cta-content mb-80">
                     <div className="call-now-btn">
                       <a href="#">
-                        <span>Call us now:</span> (+65) 1234 5678
+                        <span>Call us now:</span> +92 300 2735711
                       </a>
                     </div>
                   </div>
@@ -1963,8 +2038,8 @@ const SinglePageComponent = () => {
             <div className="row">
               <div className="col-12">
                 <div className="section-heading text-center">
-                  <h2>Our Latest Blogs</h2>
-                  <p>Hit the button below or give us a call!</p>
+                  <h2>Our Cources</h2>
+                  <p>Choose what you want to learn!</p>
                 </div>
               </div>
             </div>
@@ -2082,7 +2157,7 @@ const SinglePageComponent = () => {
                 <div className="single-footer-widget mb-80">
                   <h4 className="widget-title">Contact Us</h4>
                   <div className="footer-content mb-15">
-                    <h3>(+65) 1234 5678</h3>
+                    <h3>+92 300 2735711</h3>
                     <p>
                       40 Baria Sreet 13/2 NY City, US <br />{" "}
                       hello.colorlib@gmail.com
@@ -2151,7 +2226,7 @@ const SinglePageComponent = () => {
                   </p>
                   <div className="copywrite-text mb-30">
                     <p>
-                      © Copyright 2018 <a href="#">Colorlib</a>.
+                      © Copyright 2021 <a href="#">AL-ABID mobile repairing institute</a>.
                     </p>
                   </div>
                   <div className="footer-social-info">
