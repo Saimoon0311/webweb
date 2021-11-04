@@ -11,17 +11,12 @@ import { Carousel } from "react-bootstrap";
 
 import logos from "./Images/ff.png";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
-<<<<<<< HEAD
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
-
-=======
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import uu from './Images/uu.jpeg'
 import qq from './Images/qq.jpeg'
 import tt from './Images/tt.jpeg'
 import ww from './Images/ww.jpeg'
 import yy from './Images/yy.jpeg'
->>>>>>> a87de503e03fd30e05004ba29374e403d7cf2c4f
 import "swiper/swiper-bundle.min.css";
 import jQuery from "jquery";
 import { findDOMNode } from "react-dom";
@@ -29,157 +24,158 @@ import $ from "jquery";
 import image from "./Images/rr.jpeg";
 
 const SinglePageComponent = () => {
-  var uza_window = $(window);
-  uza_window.on("scroll", function () {
-    if (uza_window.scrollTop() > 0) {
-      $(".main-header-area").addClass("sticky");
-    } else {
-      $(".main-header-area").removeClass("sticky");
-    }
-  });
+  // var uza_window = $(window);
+  // uza_window.on("scroll", function () {
+  //   if (uza_window.scrollTop() > 0) {
+  //     $(".main-header-area").addClass("sticky");
+  //   } else {
+  //     $(".main-header-area").removeClass("sticky");
+  //   }
+  // });
 
-  (function ($) {
-    if ($.fn.classyNav) {
-      $("#uzaNav").classyNav();
-    }
-    $.fn.classyNav = function (options) {
-      // Variables
-      var navContainer = $(".classy-nav-container");
-      var classy_nav = $(".classynav ul");
-      var classy_navli = $(".classynav > ul > li");
-      var navbarToggler = $(".classy-navbar-toggler");
-      var closeIcon = $(".classycloseIcon");
-      var navToggler = $(".navbarToggler");
-      var classyMenu = $(".classy-menu");
-      var var_window = $(window);
+  
+  // (function ($) {
+  //   if ($.fn.classyNav) {
+  //     $("#uzaNav").classyNav();
+  //   }
+  //   $.fn.classyNav = function (options) {
+  //     // Variables
+  //     var navContainer = $(".classy-nav-container");
+  //     var classy_nav = $(".classynav ul");
+  //     var classy_navli = $(".classynav > ul > li");
+  //     var navbarToggler = $(".classy-navbar-toggler");
+  //     var closeIcon = $(".classycloseIcon");
+  //     var navToggler = $(".navbarToggler");
+  //     var classyMenu = $(".classy-menu");
+  //     var var_window = $(window);
 
-      // default options
-      var defaultOpt = $.extend(
-        {
-          theme: "light",
-          breakpoint: 991,
-          openCloseSpeed: 350,
-          megaopenCloseSpeed: 700,
-          alwaysHidden: false,
-          openMobileMenu: "left",
-          dropdownRtl: true,
-          stickyNav: true,
-          stickyFooterNav: false,
-        },
-        options
-      );
+  //     // default options
+  //     var defaultOpt = $.extend(
+  //       {
+  //         theme: "light",
+  //         breakpoint: 991,
+  //         openCloseSpeed: 350,
+  //         megaopenCloseSpeed: 700,
+  //         alwaysHidden: false,
+  //         openMobileMenu: "left",
+  //         dropdownRtl: true,
+  //         stickyNav: true,
+  //         stickyFooterNav: false,
+  //       },
+  //       options
+  //     );
 
-      return this.each(function () {
-        // light or dark theme
-        if (defaultOpt.theme === "light" || defaultOpt.theme === "dark") {
-          navContainer.addClass(defaultOpt.theme);
-        }
+  //     return this.each(function () {
+  //       // light or dark theme
+  //       if (defaultOpt.theme === "light" || defaultOpt.theme === "dark") {
+  //         navContainer.addClass(defaultOpt.theme);
+  //       }
 
-        // open mobile menu direction 'left' or 'right' side
-        if (
-          defaultOpt.openMobileMenu === "left" ||
-          defaultOpt.openMobileMenu === "right"
-        ) {
-          navContainer.addClass(defaultOpt.openMobileMenu);
-        }
+  //       // open mobile menu direction 'left' or 'right' side
+  //       if (
+  //         defaultOpt.openMobileMenu === "left" ||
+  //         defaultOpt.openMobileMenu === "right"
+  //       ) {
+  //         navContainer.addClass(defaultOpt.openMobileMenu);
+  //       }
 
-        // dropdown rtl
-        if (defaultOpt.dropdownRtl === true) {
-          navContainer.addClass("dropdown-rtl");
-        }
+  //       // dropdown rtl
+  //       if (defaultOpt.dropdownRtl === true) {
+  //         navContainer.addClass("dropdown-rtl");
+  //       }
 
-        // navbar toggler
-        navbarToggler.on("click", function () {
-          navToggler.addClass("active");
-          classyMenu.addClass("menu-on");
-        });
+  //       // navbar toggler
+  //       navbarToggler.on("click", function () {
+  //         navToggler.addClass("active");
+  //         classyMenu.addClass("menu-on");
+  //       });
 
-        // close icon
-        closeIcon.on("click", function () {
-          classyMenu.removeClass("menu-on");
-          navToggler.removeClass("active");
-        });
+  //       // close icon
+  //       closeIcon.on("click", function () {
+  //         classyMenu.removeClass("menu-on");
+  //         navToggler.removeClass("active");
+  //       });
 
-        // add dropdown & megamenu class in parent li class
-        classy_navli.has(".dropdown").addClass("cn-dropdown-item");
-        classy_navli.has(".megamenu").addClass("megamenu-item");
+  //       // add dropdown & megamenu class in parent li class
+  //       classy_navli.has(".dropdown").addClass("cn-dropdown-item");
+  //       classy_navli.has(".megamenu").addClass("megamenu-item");
 
-        // adds toggle button to li items that have children
-        classy_nav.find("li a").each(function () {
-          if ($(this).next().length > 0) {
-            $(this)
-              .parent("li")
-              .addClass("has-down")
-              .append('<span class="dd-trigger"></span>');
-          }
-        });
+  //       // adds toggle button to li items that have children
+  //       classy_nav.find("li a").each(function () {
+  //         if ($(this).next().length > 0) {
+  //           $(this)
+  //             .parent("li")
+  //             .addClass("has-down")
+  //             .append('<span class="dd-trigger"></span>');
+  //         }
+  //       });
 
-        // expands the dropdown menu on each click
-        classy_nav.find("li .dd-trigger").on("click", function (e) {
-          e.preventDefault();
-          $(this)
-            .parent("li")
-            .children("ul")
-            .stop(true, true)
-            .slideToggle(defaultOpt.openCloseSpeed);
-          $(this).parent("li").toggleClass("active");
-        });
+  //       // expands the dropdown menu on each click
+  //       classy_nav.find("li .dd-trigger").on("click", function (e) {
+  //         e.preventDefault();
+  //         $(this)
+  //           .parent("li")
+  //           .children("ul")
+  //           .stop(true, true)
+  //           .slideToggle(defaultOpt.openCloseSpeed);
+  //         $(this).parent("li").toggleClass("active");
+  //       });
 
-        // add padding in dropdown & megamenu item
-        $(".megamenu-item").removeClass("has-down");
+  //       // add padding in dropdown & megamenu item
+  //       $(".megamenu-item").removeClass("has-down");
 
-        // expands the megamenu on each click
-        classy_nav.find("li .dd-trigger").on("click", function (e) {
-          e.preventDefault();
-          $(this)
-            .parent("li")
-            .children(".megamenu")
-            .slideToggle(defaultOpt.megaopenCloseSpeed);
-        });
+  //       // expands the megamenu on each click
+  //       classy_nav.find("li .dd-trigger").on("click", function (e) {
+  //         e.preventDefault();
+  //         $(this)
+  //           .parent("li")
+  //           .children(".megamenu")
+  //           .slideToggle(defaultOpt.megaopenCloseSpeed);
+  //       });
 
-        // check browser width in real-time
-        function breakpointCheck() {
-          var windoWidth = window.innerWidth;
-          if (windoWidth <= defaultOpt.breakpoint) {
-            navContainer.removeClass("breakpoint-off");
-            navContainer.addClass("breakpoint-on");
-            // $('.breakpoint-off').toggleClass('breakpoint-on');
-          } else {
-            navContainer.removeClass("breakpoint-on");
-            navContainer.addClass("breakpoint-off");
-            // $('.breakpoint-on').toggleClass('breakpoint-off');
-          }
-        }
+  //       // check browser width in real-time
+  //       function breakpointCheck() {
+  //         var windoWidth = window.innerWidth;
+  //         if (windoWidth <= defaultOpt.breakpoint) {
+  //           navContainer.removeClass("breakpoint-off");
+  //           navContainer.addClass("breakpoint-on");
+  //           // $('.breakpoint-off').toggleClass('breakpoint-on');
+  //         } else {
+  //           navContainer.removeClass("breakpoint-on");
+  //           navContainer.addClass("breakpoint-off");
+  //           // $('.breakpoint-on').toggleClass('breakpoint-off');
+  //         }
+  //       }
 
-        breakpointCheck();
+  //       breakpointCheck();
 
-        var_window.on("resize", function () {
-          breakpointCheck();
-        });
+  //       var_window.on("resize", function () {
+  //         breakpointCheck();
+  //       });
 
-        // always hidden enable
-        if (defaultOpt.alwaysHidden) {
-          navContainer.addClass("breakpoint-on").removeClass("breakpoint-off");
-        }
+  //       // always hidden enable
+  //       if (defaultOpt.alwaysHidden) {
+  //         navContainer.addClass("breakpoint-on").removeClass("breakpoint-off");
+  //       }
 
-        // sticky
-        if (defaultOpt.stickyNav) {
-          var_window.on("scroll", function () {
-            if (var_window.scrollTop() > 0) {
-              navContainer.addClass("classy-sticky");
-            } else {
-              navContainer.removeClass("classy-sticky");
-            }
-          });
-        }
+  //       // sticky
+  //       if (defaultOpt.stickyNav) {
+  //         var_window.on("scroll", function () {
+  //           if (var_window.scrollTop() > 0) {
+  //             navContainer.addClass("classy-sticky");
+  //           } else {
+  //             navContainer.removeClass("classy-sticky");
+  //           }
+  //         });
+  //       }
 
-        // footer sticky
-        if (defaultOpt.stickyFooterNav === true) {
-          navContainer.addClass("classy-sticky-footer");
-        }
-      });
-    };
-  })(jQuery);
+  //       // footer sticky
+  //       if (defaultOpt.stickyFooterNav === true) {
+  //         navContainer.addClass("classy-sticky-footer");
+  //       }
+  //     });
+  //   };
+  // })(jQuery);
 
   // let listener = null
   // const [scrollState, setScrollState] = useState("top")
@@ -234,6 +230,148 @@ const SinglePageComponent = () => {
         console.log(responseData);
       });
   }
+     
+      var var_window = $(window);
+    useEffect(() => {
+      
+      
+        // Variables
+        var navContainer = $(".classy-nav-container");
+        var classy_nav = $(".classynav ul");
+        var classy_navli = $(".classynav > ul > li");
+        var navbarToggler = $(".classy-navbar-toggler");
+        var closeIcon = $(".classycloseIcon");
+        var navToggler = $(".navbarToggler");
+        var classyMenu = $(".classy-menu");
+        
+  
+        // default options
+        var defaultOpt = $.extend(
+          {
+            theme: "light",
+            breakpoint: 991,
+            openCloseSpeed: 350,
+            megaopenCloseSpeed: 700,
+            alwaysHidden: false,
+            openMobileMenu: "left",
+            dropdownRtl: true,
+            stickyNav: true,
+            stickyFooterNav: false,
+          },
+        );
+  
+          // light or dark theme
+          if (defaultOpt.theme === "light" || defaultOpt.theme === "dark") {
+            navContainer.addClass(defaultOpt.theme);
+          }
+  
+          // open mobile menu direction 'left' or 'right' side
+          if (
+            defaultOpt.openMobileMenu === "left" ||
+            defaultOpt.openMobileMenu === "right"
+          ) {
+            navContainer.addClass(defaultOpt.openMobileMenu);
+          }
+  
+          // dropdown rtl
+          if (defaultOpt.dropdownRtl === true) {
+            navContainer.addClass("dropdown-rtl");
+          }
+  
+          // navbar toggler
+          navbarToggler.on("click", function () {
+            navToggler.addClass("active");
+            classyMenu.addClass("menu-on");
+          });
+  
+          // close icon
+          closeIcon.on("click", function () {
+            classyMenu.removeClass("menu-on");
+            navToggler.removeClass("active");
+          });
+  
+          // add dropdown & megamenu class in parent li class
+          classy_navli.has(".dropdown").addClass("cn-dropdown-item");
+          classy_navli.has(".megamenu").addClass("megamenu-item");
+  
+          // adds toggle button to li items that have children
+          classy_nav.find("li a").each(function () {
+            if ($(this).next().length > 0) {
+              $(this)
+                .parent("li")
+                .addClass("has-down")
+                .append('<span class="dd-trigger"></span>');
+            }
+          });
+  
+          // expands the dropdown menu on each click
+          classy_nav.find("li .dd-trigger").on("click", function (e) {
+            e.preventDefault();
+            $(this)
+              .parent("li")
+              .children("ul")
+              .stop(true, true)
+              .slideToggle(defaultOpt.openCloseSpeed);
+            $(this).parent("li").toggleClass("active");
+          });
+  
+          // add padding in dropdown & megamenu item
+          $(".megamenu-item").removeClass("has-down");
+  
+          // expands the megamenu on each click
+          classy_nav.find("li .dd-trigger").on("click", function (e) {
+            e.preventDefault();
+            $(this)
+              .parent("li")
+              .children(".megamenu")
+              .slideToggle(defaultOpt.megaopenCloseSpeed);
+          });
+  
+          // check browser width in real-time
+          function breakpointCheck() {
+            var windoWidth = window.innerWidth;
+            if (windoWidth <= defaultOpt.breakpoint) {
+              navContainer.removeClass("breakpoint-off");
+              navContainer.addClass("breakpoint-on");
+              // $('.breakpoint-off').toggleClass('breakpoint-on');
+            } else {
+              navContainer.removeClass("breakpoint-on");
+              navContainer.addClass("breakpoint-off");
+              // $('.breakpoint-on').toggleClass('breakpoint-off');
+            }
+          }
+  
+          breakpointCheck();
+  
+          var_window.on("resize", function () {
+            breakpointCheck();
+          });
+  
+          // always hidden enable
+          if (defaultOpt.alwaysHidden) {
+            navContainer.addClass("breakpoint-on").removeClass("breakpoint-off");
+          }
+  
+          // sticky
+          if (defaultOpt.stickyNav) {
+            var_window.on("scroll", function () {
+              if (var_window.scrollTop() > 0) {
+                navContainer.addClass("sticky");
+              } else {
+                navContainer.removeClass("sticky");
+              }
+            });
+          }
+  
+          // footer sticky
+          if (defaultOpt.stickyFooterNav === true) {
+            navContainer.addClass("classy-sticky-footer");
+          }
+       
+      
+    }, [var_window]);
+
+
 
   return (
     <>
@@ -1833,7 +1971,7 @@ const SinglePageComponent = () => {
                 </p>
               </div>
               <div className="row">
-                <div className="col-lg-4 col-md-6">
+                <div className="col-lg-3 col-md-6">
                   <div className="box">
                     <h3>Free</h3>
                     <h4>
@@ -1853,7 +1991,7 @@ const SinglePageComponent = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-6 mt-4 mt-md-0">
+                <div className="col-lg-3 col-md-6 mt-4 mt-md-0">
                   <div className="box recommended">
                     <h3>Business</h3>
                     <h4>
@@ -1873,7 +2011,27 @@ const SinglePageComponent = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-6 mt-4 mt-lg-0">
+                <div className="col-lg-3 col-md-6 mt-4 mt-md-0">
+                  <div className="box recommended">
+                    <h3>Business</h3>
+                    <h4>
+                      <sup>$</sup>19<span> / month</span>
+                    </h4>
+                    <ul>
+                      <li>Aida dere</li>
+                      <li>Nec feugiat nisl</li>
+                      <li>Nulla at volutpat dola</li>
+                      <li>Pharetra massa</li>
+                      <li className="na">Massa ultricies mi</li>
+                    </ul>
+                    <div className="btn-wrap">
+                      <a href="#" className="btn-buy">
+                        Buy Now
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-3 col-md-6 mt-4 mt-lg-0">
                   <div className="box">
                     <h3>Developer</h3>
                     <h4>
