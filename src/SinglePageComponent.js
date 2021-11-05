@@ -1156,18 +1156,6 @@ const SinglePageComponent = () => {
                   data-pagespeed-url-hash={945763387}
                   onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                 />
-                <div className="overlay-effect">
-                  <h4>Digital Marketing</h4>
-                  <p>
-                    At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet gubergren no sea takimata sanctus est
-                  </p>
-                </div>
-                <div className="view-more-btn">
-                  <a href="#">
-                    <i className="arrow_right" />
-                  </a>
-                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -1178,18 +1166,6 @@ const SinglePageComponent = () => {
                   data-pagespeed-url-hash={651263466}
                   onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                 />
-                <div className="overlay-effect">
-                  <h4>Digital Marketing</h4>
-                  <p>
-                    At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet gubergren no sea takimata sanctus est
-                  </p>
-                </div>
-                <div className="view-more-btn">
-                  <a href="#">
-                    <i className="arrow_right" />
-                  </a>
-                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -1200,18 +1176,6 @@ const SinglePageComponent = () => {
                   data-pagespeed-url-hash={945763387}
                   onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                 />
-                <div className="overlay-effect">
-                  <h4>Digital Marketing</h4>
-                  <p>
-                    At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet gubergren no sea takimata sanctus est
-                  </p>
-                </div>
-                <div className="view-more-btn">
-                  <a href="#">
-                    <i className="arrow_right" />
-                  </a>
-                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -1222,18 +1186,6 @@ const SinglePageComponent = () => {
                   data-pagespeed-url-hash={62263624}
                   onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                 />
-                <div className="overlay-effect">
-                  <h4>Digital Marketing</h4>
-                  <p>
-                    At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet gubergren no sea takimata sanctus est
-                  </p>
-                </div>
-                <div className="view-more-btn">
-                  <a href="#">
-                    <i className="arrow_right" />
-                  </a>
-                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -1244,18 +1196,6 @@ const SinglePageComponent = () => {
                   data-pagespeed-url-hash={356763545}
                   onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                 />
-                <div className="overlay-effect">
-                  <h4>Digital Marketing</h4>
-                  <p>
-                    At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet gubergren no sea takimata sanctus est
-                  </p>
-                </div>
-                <div className="view-more-btn">
-                  <a href="#">
-                    <i className="arrow_right" />
-                  </a>
-                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -1266,18 +1206,6 @@ const SinglePageComponent = () => {
                   data-pagespeed-url-hash={651263466}
                   onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                 />
-                <div className="overlay-effect">
-                  <h4>Digital Marketing</h4>
-                  <p>
-                    At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet gubergren no sea takimata sanctus est
-                  </p>
-                </div>
-                <div className="view-more-btn">
-                  <a href="#">
-                    <i className="arrow_right" />
-                  </a>
-                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -1288,18 +1216,6 @@ const SinglePageComponent = () => {
                   data-pagespeed-url-hash={945763387}
                   onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                 />
-                <div className="overlay-effect">
-                  <h4>Digital Marketing</h4>
-                  <p>
-                    At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet gubergren no sea takimata sanctus est
-                  </p>
-                </div>
-                <div className="view-more-btn">
-                  <a href="#">
-                    <i className="arrow_right" />
-                  </a>
-                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -1310,18 +1226,6 @@ const SinglePageComponent = () => {
                   data-pagespeed-url-hash={651263466}
                   onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                 />
-                <div className="overlay-effect">
-                  <h4>Digital Marketing</h4>
-                  <p>
-                    At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet gubergren no sea takimata sanctus est
-                  </p>
-                </div>
-                <div className="view-more-btn">
-                  <a href="#">
-                    <i className="arrow_right" />
-                  </a>
-                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -1332,18 +1236,6 @@ const SinglePageComponent = () => {
                   data-pagespeed-url-hash={945763387}
                   onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                 />
-                <div className="overlay-effect">
-                  <h4>Digital Marketing</h4>
-                  <p>
-                    At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet gubergren no sea takimata sanctus est
-                  </p>
-                </div>
-                <div className="view-more-btn">
-                  <a href="#">
-                    <i className="arrow_right" />
-                  </a>
-                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -1354,18 +1246,6 @@ const SinglePageComponent = () => {
                   data-pagespeed-url-hash={62263624}
                   onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                 />
-                <div className="overlay-effect">
-                  <h4>Digital Marketing</h4>
-                  <p>
-                    At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet gubergren no sea takimata sanctus est
-                  </p>
-                </div>
-                <div className="view-more-btn">
-                  <a href="#">
-                    <i className="arrow_right" />
-                  </a>
-                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -1376,18 +1256,6 @@ const SinglePageComponent = () => {
                   data-pagespeed-url-hash={356763545}
                   onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                 />
-                <div className="overlay-effect">
-                  <h4>Digital Marketing</h4>
-                  <p>
-                    At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet gubergren no sea takimata sanctus est
-                  </p>
-                </div>
-                <div className="view-more-btn">
-                  <a href="#">
-                    <i className="arrow_right" />
-                  </a>
-                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -1398,18 +1266,6 @@ const SinglePageComponent = () => {
                   data-pagespeed-url-hash={651263466}
                   onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                 />
-                <div className="overlay-effect">
-                  <h4>Digital Marketing</h4>
-                  <p>
-                    At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet gubergren no sea takimata sanctus est
-                  </p>
-                </div>
-                <div className="view-more-btn">
-                  <a href="#">
-                    <i className="arrow_right" />
-                  </a>
-                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -1420,18 +1276,6 @@ const SinglePageComponent = () => {
                           data-pagespeed-url-hash={945763387}
                           onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                         />
-                        <div className="overlay-effect">
-                          <h4>Digital Marketing</h4>
-                          <p>
-                            At vero eos et accusam et justo duo dolores et ea
-                            rebum. Stet gubergren no sea takimata sanctus est
-                          </p>
-                        </div>
-                        <div className="view-more-btn">
-                          <a href="#">
-                            <i className="arrow_right" />
-                          </a>
-                        </div>
                       </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -1442,18 +1286,6 @@ const SinglePageComponent = () => {
                           data-pagespeed-url-hash={651263466}
                           onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                         />
-                        <div className="overlay-effect">
-                          <h4>Digital Marketing</h4>
-                          <p>
-                            At vero eos et accusam et justo duo dolores et ea
-                            rebum. Stet gubergren no sea takimata sanctus est
-                          </p>
-                        </div>
-                        <div className="view-more-btn">
-                          <a href="#">
-                            <i className="arrow_right" />
-                          </a>
-                        </div>
                       </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -1464,18 +1296,6 @@ const SinglePageComponent = () => {
                           data-pagespeed-url-hash={945763387}
                           onload="pagespeed.CriticalImages.checkImageForCriticality(this);"
                         />
-                        <div className="overlay-effect">
-                          <h4>Digital Marketing</h4>
-                          <p>
-                            At vero eos et accusam et justo duo dolores et ea
-                            rebum. Stet gubergren no sea takimata sanctus est
-                          </p>
-                        </div>
-                        <div className="view-more-btn">
-                          <a href="#">
-                            <i className="arrow_right" />
-                          </a>
-                        </div>
                       </div>
             </SwiperSlide>
           </Swiper>
@@ -2070,7 +1890,7 @@ const SinglePageComponent = () => {
                 <div className="contact-address">
                   <i className="fa fa-map-marker-alt"></i>
                   <h3>Address</h3>
-                  <address>A108 Adam Street, NY 535022, USA</address>
+                  <address>Saddar mobile market Amma tower Shop no Lf 26/27</address>
                 </div>
               </div>
               <div className="col-md-4">
@@ -2078,7 +1898,7 @@ const SinglePageComponent = () => {
                   <i className="bi bi-phone" />
                   <h3>Phone Number</h3>
                   <p>
-                    <a href="tel:+155895548855">+1 5589 55488 55</a>
+                    <a href="tel:+155895548855">+92 300 2735711</a>
                   </p>
                 </div>
               </div>
@@ -2087,7 +1907,7 @@ const SinglePageComponent = () => {
                   <i className="bi bi-envelope" />
                   <h3>Email</h3>
                   <p>
-                    <a href="mailto:info@example.com">info@example.com</a>
+                    <a href="mailto:info@example.com">Alabidmobile1@gmai.com</a>
                   </p>
                 </div>
               </div>
@@ -2317,12 +2137,12 @@ const SinglePageComponent = () => {
                   <div className="footer-content mb-15">
                     <h3>+92 300 2735711</h3>
                     <p>
-                      40 Baria Sreet 13/2 NY City, US <br />{" "}
-                      hello.colorlib@gmail.com
+                    Saddar mobile market Amma tower Shop no Lf 26/27<br />{" "}
+                      Alabidmobile1@gmai.com
                     </p>
                   </div>
                   <p className="mb-0">
-                    Mon - Fri: 9:00 - 19:00 <br />
+                    Mon - Fri: 11:00 - 11:00 <br />
                     Closed on Weekends
                   </p>
                 </div>
