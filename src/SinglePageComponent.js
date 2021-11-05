@@ -7,7 +7,7 @@ import "./style.css";
 // import "./newstyle.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
-import { Carousel } from "react-bootstrap";
+import { Carousel, Form } from "react-bootstrap";
 
 import logos from "./Images/ff.png";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
@@ -24,16 +24,17 @@ import $ from "jquery";
 import image from "./Images/rr.jpeg";
 
 const SinglePageComponent = () => {
-  // var uza_window = $(window);
-  // uza_window.on("scroll", function () {
-  //   if (uza_window.scrollTop() > 0) {
-  //     $(".main-header-area").addClass("sticky");
-  //   } else {
-  //     $(".main-header-area").removeClass("sticky");
-  //   }
-  // });
 
-  
+  var uza_window = $(window);
+  uza_window.on("scroll", function () {
+    if (uza_window.scrollTop() > 0) {
+      $(".main-header-area").addClass("sticky");
+    } else {
+      $(".main-header-area").removeClass("sticky");
+    }
+  });
+
+
   // (function ($) {
   //   if ($.fn.classyNav) {
   //     $("#uzaNav").classyNav();
@@ -199,14 +200,28 @@ const SinglePageComponent = () => {
   //     }, [scrollState])
 
   const [name, setName] = useState();
+  const [fathername, setFatherName] = useState();
+  const [phone, setPhone] = useState();
+  const [homeNumber, setHomeNumber] = useState();
+  const [cnicNumber, setCNICNumber] = useState();
   const [email, setEmail] = useState();
-  const [subject, setSubject] = useState();
+  const [education, setEducation] = useState();
+  const [time, setTime] = useState();
   const [message, setMessage] = useState();
+
+  const [courseTitle, setCourseTitle] = useState();
+  console.log(courseTitle);
+  console.log(time);
 
   const data = {
     name: name,
+    fathername: fathername,
+    phone: phone,
+    homeNumber: homeNumber,
+    cnicNumber: cnicNumber,
     email: email,
-    subject: subject,
+    education: education,
+    time: time,
     message: message,
   };
 
@@ -348,20 +363,20 @@ const SinglePageComponent = () => {
           });
   
           // always hidden enable
-          if (defaultOpt.alwaysHidden) {
+          if (defaultOpt.alwaysHidden === true) {
             navContainer.addClass("breakpoint-on").removeClass("breakpoint-off");
           }
   
           // sticky
-          if (defaultOpt.stickyNav) {
-            var_window.on("scroll", function () {
-              if (var_window.scrollTop() > 0) {
-                navContainer.addClass("sticky");
-              } else {
-                navContainer.removeClass("sticky");
-              }
-            });
-          }
+          // if (defaultOpt.stickyNav === true) {
+          //   var_window.on("scroll", function () {
+          //     if (var_window.scrollTop() > 0) {
+          //       navContainer.addClass("sticky");
+          //     } else {
+          //       navContainer.removeClass("sticky");
+          //     }
+          //   });
+          // }
   
           // footer sticky
           if (defaultOpt.stickyFooterNav === true) {
@@ -1961,7 +1976,7 @@ const SinglePageComponent = () => {
           <section id="pricing" className="pricing mb-5">
             <div className="container">
               <div className="section-title">
-                <h2>Pricing</h2>
+                <h2>Courses</h2>
                 <p>
                   Magnam dolores commodi suscipit. Necessitatibus eius
                   consequatur ex aliquid fuga eum quidem. Sit sint consectetur
@@ -1971,84 +1986,47 @@ const SinglePageComponent = () => {
                 </p>
               </div>
               <div className="row">
-                <div className="col-lg-3 col-md-6">
-                  <div className="box">
-                    <h3>Free</h3>
-                    <h4>
-                      <sup>$</sup>0<span> / month</span>
-                    </h4>
-                    <ul>
-                      <li>Aida dere</li>
-                      <li>Nec feugiat nisl</li>
-                      <li>Nulla at volutpat dola</li>
-                      <li className="na">Pharetra massa</li>
-                      <li className="na">Massa ultricies mi</li>
-                    </ul>
-                    <div className="btn-wrap">
-                      <a href="#" className="btn-buy">
-                        Buy Now
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3 col-md-6 mt-4 mt-md-0">
+                <div className="col-lg-4 col-md-6">
                   <div className="box recommended">
-                    <h3>Business</h3>
+                    <h3 className="pt-4 mb-4">Mobile Hardware Repair</h3>
                     <h4>
-                      <sup>$</sup>19<span> / month</span>
+                      <sup>	</sup>18,000<span>&#8360;</span>
                     </h4>
-                    <ul>
-                      <li>Aida dere</li>
-                      <li>Nec feugiat nisl</li>
-                      <li>Nulla at volutpat dola</li>
-                      <li>Pharetra massa</li>
-                      <li className="na">Massa ultricies mi</li>
-                    </ul>
-                    <div className="btn-wrap">
+                    <h6>Duration: 2 Months</h6>
+                    {/* <div className="btn-wrap">
                       <a href="#" className="btn-buy">
                         Buy Now
                       </a>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
-                <div className="col-lg-3 col-md-6 mt-4 mt-md-0">
+
+                <div className="col-lg-4 col-md-6 mt-4 mt-md-0">
                   <div className="box recommended">
-                    <h3>Business</h3>
+                    <h3 className="pt-4 mb-4">Mobile Software</h3>
                     <h4>
-                      <sup>$</sup>19<span> / month</span>
+                      <sup></sup>15,000<span>Rs</span>
                     </h4>
-                    <ul>
-                      <li>Aida dere</li>
-                      <li>Nec feugiat nisl</li>
-                      <li>Nulla at volutpat dola</li>
-                      <li>Pharetra massa</li>
-                      <li className="na">Massa ultricies mi</li>
-                    </ul>
-                    <div className="btn-wrap">
+                   <h6>Duration: 1 Month</h6>
+                    {/* <div className="btn-wrap">
                       <a href="#" className="btn-buy">
                         Buy Now
                       </a>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
-                <div className="col-lg-3 col-md-6 mt-4 mt-lg-0">
-                  <div className="box">
-                    <h3>Developer</h3>
+                <div className="col-lg-4 col-md-6 mt-4 mt-lg-0">
+                  <div className="box recommended">
+                    <h3>Complete all mobile glass chnage</h3>
                     <h4>
-                      <sup>$</sup>29<span> / month</span>
+                      <sup></sup>15,000<span>Rs</span>
                     </h4>
-                    <ul>
-                      <li>Aida dere</li>
-                      <li>Nec feugiat nisl</li>
-                      <li>Nulla at volutpat dola</li>
-                      <li>Pharetra massa</li>
-                      <li>Massa ultricies mi</li>
-                    </ul>
-                    <div className="btn-wrap">
+                    <h6>Duration: 1 Month</h6>
+                    {/* <div className="btn-wrap">
                       <a href="#" className="btn-buy">
                         Buy Now
                       </a>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -2106,7 +2084,7 @@ const SinglePageComponent = () => {
                       name="name"
                       className="form-control"
                       id="name"
-                      placeholder="Your Name"
+                      placeholder="Name"
                       data-rule="minlen:4"
                       data-msg="Please enter at least 4 chars"
                       onChange={(e) => {
@@ -2116,32 +2094,124 @@ const SinglePageComponent = () => {
                   </div>
                   <div className="col-md-6 form-group mt-3 mt-md-0">
                     <input
-                      type="email"
+                      type="text"
                       className="form-control"
-                      name="email"
+                      name="father_name"
                       id="email"
-                      placeholder="Your Email"
+                      placeholder="Father Name"
                       data-rule="email"
                       data-msg="Please enter a valid email"
+                      onChange={(e) => {
+                        setFatherName(e.target.value);
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div className="row mt-3">
+                  <div className="col-md-6 form-group">
+                    <input
+                      type="number"
+                      name="number"
+                      className="form-control"
+                      id="name"
+                      placeholder="Number"
+                      data-rule="minlen:4"
+                      data-msg="Please enter at least 4 chars"
+                      onChange={(e) => {
+                        setPhone(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div className="col-md-6 form-group mt-3 mt-md-0">
+                    <input
+                      type="number"
+                      className="form-control"
+                      name="home_number"
+                      id="email"
+                      placeholder="Home Number"
+                      data-rule="email"
+                      data-msg="Please enter a valid email"
+                      onChange={(e) => {
+                        setHomeNumber(e.target.value);
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div className="row mt-3">
+                  <div className="col-md-6 form-group">
+                    <input
+                      type="text"
+                      name="email"
+                      className="form-control"
+                      id="name"
+                      placeholder="Email"
+                      data-rule="minlen:4"
+                      data-msg="Please enter at least 4 chars"
                       onChange={(e) => {
                         setEmail(e.target.value);
                       }}
                     />
                   </div>
+                  <div className="col-md-6 form-group mt-3 mt-md-0">
+                    <input
+                      type="number"
+                      className="form-control"
+                      name="cnic_number"
+                      id="email"
+                      placeholder="CNIC"
+                      data-rule="email"
+                      data-msg="Please enter a valid email"
+                      onChange={(e) => {
+                        setCNICNumber(e.target.value);
+                      }}
+                    />
+                  </div>
                 </div>
-                <div className="form-group mt-3">
-                  <input
-                    type="text"
-                    className="form-control"
-                    name="subject"
-                    id="subject"
-                    placeholder="Subject"
-                    required
-                    onChange={(e) => {
-                      setSubject(e.target.value);
-                    }}
-                  />
+
+                <div className="row mt-3">
+                  <div className="col-md-6 form-group">
+                    <input
+                      type="text"
+                      name="education"
+                      className="form-control"
+                      id="name"
+                      placeholder="Education"
+                      data-rule="minlen:4"
+                      data-msg="Please enter at least 4 chars"
+                      onChange={(e) => {
+                        setEducation(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div className="col-md-6 form-group mt-3 mt-md-0">
+                    <input
+                      type="time"
+                      className="form-control"
+                      name="time"
+                      id="email"
+                      placeholder="Select timing"
+                      data-rule="email"
+                      data-msg="Please enter a valid email"
+                      onChange={(e) => {
+                        setTime(e.target.value);
+                      }}
+                    />
+                  </div>
                 </div>
+               
+                <div className="row mt-3">
+                  <div className="col-md-6 form-group">
+                   
+                    <Form.Select aria-label="Select Course" onChange={(e)=>{setCourseTitle(e.target.value)}}> 
+                      <option>Select Course</option>
+                      <option value="glass repair">glass repair</option>
+                      <option value="smartphone-repair">smartphone repair</option>
+                    </Form.Select>
+                  </div>
+                </div>
+
                 <div className="form-group mt-3">
                   <textarea
                     className="form-control"

@@ -3260,17 +3260,40 @@ input:focus {
   overflow: hidden;
   border: 1px solid rgb(213 211 211 / 73%);
 }
-.pricing .recommended {
-  background: #61a4c3fa;
+.pricing .box{
+  padding: 20px;
+  background: #f7f7f7;
+  text-align: center;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgb(213 211 211 / 73%);
+ 
 }
-.pricing .recommended h3, .pricing .recommended h4, .pricing .recommended h4 span, .pricing .recommended ul, .pricing .recommended ul .na {
-  color: #fff !important;
+.pricing .recommended:hover {
+  background: #61a4c3fa ;
+
 }
+.pricing .recommended:hover h3{
+  color: #f8fbfcfa;
+}
+.pricing .recommended:hover h4{
+  color: #f8fbfcfa;
+}
+.pricing .recommended:hover h4 span{
+  color: #f8fbfcfa;
+}
+.pricing .recommended:hover h6{
+  color: #f8fbfcfa;
+}
+/* .pricing .recommended h3, .pricing .recommended h4, .pricing .recommended h4 span, .pricing .recommended ul, .pricing .recommended ul .na {
+  color: #fff ;
+} */
 .pricing .box h3 {
   font-weight: 400;
   padding: 15px;
   margin-top: 15px;
-  font-size: 18px;
+  font-size: 25px;
   font-weight: 600;
   color: #2a2a2a;
 }
@@ -3317,5 +3340,6 @@ input:focus {
 .pricing .box .btn-buy:hover {
   background: black;
   color: #fff;
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */
