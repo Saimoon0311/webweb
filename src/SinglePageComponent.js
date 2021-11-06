@@ -1,5 +1,9 @@
 import React from "react";
-
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
+import PublishedWithChangesOutlinedIcon from '@mui/icons-material/PublishedWithChangesOutlined';
 // import "./App.css";
 import "./style.css";
 // import "./classy-nav.css";
@@ -1058,7 +1062,7 @@ const SinglePageComponent = () => {
                       href="https://www.youtube.com/watch?v=sSakBz_eYzQ"
                       className="hi-icon video-play-btn"
                     >
-                      <i className="fa fa-play" aria-hidden="true"></i>
+                      <PlayArrowOutlinedIcon className="pb-1" sx={{fontSize:50}}/>
                     </a>
                   </div>
                 </div>
@@ -1106,7 +1110,7 @@ const SinglePageComponent = () => {
               <div className="col-12 col-lg-4">
                 <div className="single-service-area mb-80">
                   <div className="service-icon">
-                    <i className="icon_cone_alt" />
+                    <PublishedWithChangesOutlinedIcon className="mb-3" sx={{fontSize:80}}/>
                   </div>
                   <h5>All Mobile Glass Change.</h5>
                   <p>
@@ -1837,7 +1841,7 @@ const SinglePageComponent = () => {
                 </div>
                 <div className="col-lg-4 col-md-6 mt-4 mt-lg-0">
                   <div className="box recommended">
-                    <h3>Complete all mobile glass chnage</h3>
+                    <h3>Complete all mobile glass change</h3>
                     <h4>
                       <sup></sup>15,000<span>Rs</span>
                     </h4>
@@ -1866,14 +1870,14 @@ const SinglePageComponent = () => {
             <div className="row contact-info">
               <div className="col-md-4">
                 <div className="contact-address">
-                  <i className="fa fa-map-marker-alt"></i>
+                  <LocationOnOutlinedIcon className="mb-3" sx={{fontSize:60}}/>
                   <h3>Address</h3>
                   <address>Saddar mobile market Amma tower Shop no Lf 26/27</address>
                 </div>
               </div>
               <div className="col-md-4">
                 <div className="contact-phone">
-                  <i className="bi bi-phone" />
+                    <PhoneAndroidIcon className="mb-3" sx={{fontSize:60}}/>
                   <h3>Phone Number</h3>
                   <p>
                     <a href="tel:+155895548855">+92 300 2735711</a>
@@ -1882,10 +1886,10 @@ const SinglePageComponent = () => {
               </div>
               <div className="col-md-4">
                 <div className="contact-email">
-                  <i className="bi bi-envelope" />
+                  <MailOutlineIcon className="mb-3" sx={{fontSize:60}}/>
                   <h3>Email</h3>
                   <p>
-                    <a href="mailto:info@example.com">Alabidmobile1@gmai.com</a>
+                    <a href="mailto:info@example.com">Alabidmobile1@gmail.com</a>
                   </p>
                 </div>
               </div>
@@ -2026,8 +2030,9 @@ const SinglePageComponent = () => {
                    
                     <Form.Select aria-label="Select Course" onChange={(e)=>{setCourseTitle(e.target.value)}}> 
                       <option>Select Course</option>
-                      <option value="glass repair">glass repair</option>
-                      <option value="smartphone-repair">smartphone repair</option>
+                      <option value="mobile-hardware-repair">Mobile Hardware Repair</option>
+                      <option value="mobile-software">Mobile Software</option>
+                      <option value="complete-all-mobile-glass-change">Complete all mobile glass change</option>
                     </Form.Select>
                   </div>
                 </div>

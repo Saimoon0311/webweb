@@ -3271,8 +3271,8 @@ input:focus {
  
 }
 .pricing .recommended:hover {
-  background: #61a4c3fa ;
-
+  background: #083d72fa;
+  transition: 0.4s ease-in-out;
 }
 .pricing .recommended:hover h3{
   color: #f8fbfcfa;
@@ -3299,7 +3299,7 @@ input:focus {
 }
 .pricing .box h4 {
   font-size: 42px;
-  color: #8db16e;
+  color: #7b9763;
   font-weight: 500;
   font-family: "Open Sans", sans-serif;
   margin-bottom: 20px;
