@@ -231,7 +231,7 @@ const SinglePageComponent = () => {
 
   async function onSubmit(e) {
     e.preventDefault();
-
+    
     fetch(
       "https://sheet.best/api/sheets/18362fa5-38c4-4e4e-81d3-df643e83c332",
       {
@@ -242,12 +242,21 @@ const SinglePageComponent = () => {
         },
         body: JSON.stringify(data),
       }
-    )
+      )
       //  .then((response) => response.json())
       .then((responseData) => {
-        alert("Your Ad Has Been Posted");
+        // alert("Your Ad Has Been Posted");
         console.log(responseData);
+        return (
+          <>
+          <div className="error-message" />
+                  <div className="sent-message" style={{ display: "block" }}>
+                    Your message has been sent. Thank you!
+                  </div>
+                  </>
+        )
       });
+
   }
      
       var var_window = $(window);
@@ -1122,7 +1131,7 @@ const SinglePageComponent = () => {
               <div className="col-12 col-lg-4">
                 <div className="single-service-area mb-80">
                   <div className="service-icon">
-                    <i className="icon_piechart" />
+                  <PublishedWithChangesOutlinedIcon className="mb-3" sx={{fontSize:80}}/>
                   </div>
                   <h5>All type of mobile software.</h5>
                   <p>
@@ -1134,7 +1143,7 @@ const SinglePageComponent = () => {
               <div className="col-12 col-lg-4">
                 <div className="single-service-area mb-80">
                   <div className="service-icon">
-                    <i className="icon_easel" />
+                  <PublishedWithChangesOutlinedIcon className="mb-3" sx={{fontSize:80}}/>
                   </div>
                   <h5>All mobile hardware repairing.</h5>
                   <p>
@@ -2011,11 +2020,11 @@ const SinglePageComponent = () => {
                   </div>
                   <div className="col-md-6 form-group mt-3 mt-md-0">
                     <input
-                      type="time"
+                      type="number"
                       className="form-control"
                       name="time"
                       id="email"
-                      placeholder="Select timing"
+                      placeholder="Enter Your Suitable Time"
                       data-rule="email"
                       data-msg="Please enter a valid email"
                       onChange={(e) => {
@@ -2052,10 +2061,10 @@ const SinglePageComponent = () => {
                 </div>
                 <div className="my-3">
                   <div className="loading">Loading</div>
-                  <div className="error-message" />
+                  {/* <div className="error-message" />
                   <div className="sent-message" style={{ display: "block" }}>
                     Your message has been sent. Thank you!
-                  </div>
+                  </div> */}
                 </div>
                 <div className="text-center">
                   <button onClick={onSubmit} type="submit">
