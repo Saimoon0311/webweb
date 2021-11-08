@@ -26,6 +26,7 @@ import jQuery from "jquery";
 import { findDOMNode } from "react-dom";
 import $ from "jquery";
 import image from "./Images/rr.jpeg";
+import MessageSent from "./MessageSent";
 
 const SinglePageComponent = () => {
 
@@ -192,7 +193,7 @@ const SinglePageComponent = () => {
   //           if (scrollState !== "amir") {
   //             setScrollState("amir")
   //           }
-  //         } else {
+  //         } else { 
   //           if (scrollState !== "top") {
   //             setScrollState("top")
   //           }
@@ -247,14 +248,8 @@ const SinglePageComponent = () => {
       .then((responseData) => {
         // alert("Your Ad Has Been Posted");
         console.log(responseData);
-        return (
-          <>
-          <div className="error-message" />
-                  <div className="sent-message" style={{ display: "block" }}>
-                    Your message has been sent. Thank you!
-                  </div>
-                  </>
-        )
+
+        setSentForm(true)
       });
 
   }
@@ -398,6 +393,8 @@ const SinglePageComponent = () => {
        
       
     }, [var_window]);
+
+    const [sentForm, setSentForm] = useState(false)
 
 
 
@@ -2061,10 +2058,11 @@ const SinglePageComponent = () => {
                 </div>
                 <div className="my-3">
                   <div className="loading">Loading</div>
-                  {/* <div className="error-message" />
-                  <div className="sent-message" style={{ display: "block" }}>
+                  <div className="error-message" />
+                  {/* <div className="sent-message" style={{ display: "block" }}>
                     Your message has been sent. Thank you!
                   </div> */}
+                  {sentForm && <MessageSent />}
                 </div>
                 <div className="text-center">
                   <button onClick={onSubmit} type="submit">
