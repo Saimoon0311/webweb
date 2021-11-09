@@ -228,6 +228,7 @@ const SinglePageComponent = () => {
     education: education,
     time: time,
     message: message,
+    coursetitle: courseTitle,
   };
 
   async function onSubmit(e) {
