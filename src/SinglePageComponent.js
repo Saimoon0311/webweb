@@ -26,6 +26,7 @@ import jQuery from "jquery";
 import { findDOMNode } from "react-dom";
 import $ from "jquery";
 import image from "./Images/rr.jpeg";
+import MessageSent from "./MessageSent";
 
 const SinglePageComponent = () => {
 
@@ -192,7 +193,7 @@ const SinglePageComponent = () => {
   //           if (scrollState !== "amir") {
   //             setScrollState("amir")
   //           }
-  //         } else {
+  //         } else { 
   //           if (scrollState !== "top") {
   //             setScrollState("top")
   //           }
@@ -231,7 +232,7 @@ const SinglePageComponent = () => {
 
   async function onSubmit(e) {
     e.preventDefault();
-
+    
     fetch(
       "https://sheet.best/api/sheets/91c20068-2823-448e-9950-f1d4ed5c7c9f",
       {
@@ -242,12 +243,15 @@ const SinglePageComponent = () => {
         },
         body: JSON.stringify(data),
       }
-    )
+      )
       //  .then((response) => response.json())
       .then((responseData) => {
-        alert("Your Ad Has Been Posted");
+        // alert("Your Ad Has Been Posted");
         console.log(responseData);
+
+        setSentForm(true)
       });
+
   }
      
       var var_window = $(window);
@@ -389,6 +393,8 @@ const SinglePageComponent = () => {
        
       
     }, [var_window]);
+
+    const [sentForm, setSentForm] = useState(false)
 
 
 
@@ -1122,7 +1128,7 @@ const SinglePageComponent = () => {
               <div className="col-12 col-lg-4">
                 <div className="single-service-area mb-80">
                   <div className="service-icon">
-                    <i className="icon_piechart" />
+                  <PublishedWithChangesOutlinedIcon className="mb-3" sx={{fontSize:80}}/>
                   </div>
                   <h5>All type of mobile software.</h5>
                   <p>
@@ -1134,7 +1140,7 @@ const SinglePageComponent = () => {
               <div className="col-12 col-lg-4">
                 <div className="single-service-area mb-80">
                   <div className="service-icon">
-                    <i className="icon_easel" />
+                  <PublishedWithChangesOutlinedIcon className="mb-3" sx={{fontSize:80}}/>
                   </div>
                   <h5>All mobile hardware repairing.</h5>
                   <p>
@@ -2011,11 +2017,11 @@ const SinglePageComponent = () => {
                   </div>
                   <div className="col-md-6 form-group mt-3 mt-md-0">
                     <input
-                      type="time"
+                      type="number"
                       className="form-control"
                       name="time"
                       id="email"
-                      placeholder="Select timing"
+                      placeholder="Enter Your Suitable Time"
                       data-rule="email"
                       data-msg="Please enter a valid email"
                       onChange={(e) => {
@@ -2053,9 +2059,10 @@ const SinglePageComponent = () => {
                 <div className="my-3">
                   <div className="loading">Loading</div>
                   <div className="error-message" />
-                  <div className="sent-message" style={{ display: "block" }}>
+                  {/* <div className="sent-message" style={{ display: "block" }}>
                     Your message has been sent. Thank you!
-                  </div>
+                  </div> */}
+                  {sentForm && <MessageSent />}
                 </div>
                 <div className="text-center">
                   <button onClick={onSubmit} type="submit">
